@@ -25,3 +25,36 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 @app.route("/")
 def index():
     return render_template("landing.html")
+
+@app.route("/AboutUs")
+def AboutUs():
+    return render_template("AboutUs.html")
+
+@app.route("/Complaints")
+def Complaints():
+    return render_template("Complaints.html")
+
+@app.route("/FAQ")
+def FAQ():
+    return render_template("FAQ.html")
+
+@app.route("/Login")
+def login():
+    return render_template("Login.html")
+
+@app.route("/Metrocard")
+def metrocard():
+    return render_template("Metrocard.html")
+
+@app.route("/SignUp")
+def SignUp():
+    return render_template("Signup.html")
+
+
+@app.route("/Transaction")
+def Transaction():
+    return render_template("Transaction.html")
+
+@app.route("/TripsAndBooking")
+def tripsNbooking():
+    return render_template("tripsNbooking.html")
