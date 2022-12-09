@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+  
+<section>
+    <div class="signup-wrapper">
+        <form action="" class="form">
+          <h2>SignUp</h2>
+          <div class="input-group">
+            <input type="text" name="signupUser" id="signupUser" required />
+            <label for="signupUser">First Name</label>
+          </div>
+
+          <div class="input-group">
+            <input type="text" name="signupUser" id="signupUser" required />
+            <label for="signupUser">Last Name</label>
+          </div>
+          <div class="input-group">
+            <input
+              type="password"
+              name="signupPassword"
+              id="signupPassword"
+              required
+            />
+            <label for="signupPassword">Create Password</label>
+          </div>
+          <div class="input-group">
+            <input
+              type="password"
+              name="signupPassword"
+              id="signupPassword"
+              required
+            />
+            <label for="signupPassword">Re-Enter Password</label>
+          </div>
+          <input type="submit" value="SignUp" class="submit-btn" />
+        </form>
+      </div>
+</section>
+
+
+{% endblock %}

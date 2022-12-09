@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+<section class="FAQ-Container">
+<h1>FAQ</h1>
+<button class="accordion">Section 1</button>
+<div class="panel">
+  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore, beatae quidem! Impedit quod magnam nihil, id nisi amet iusto consequuntur.</p>
+</div>
+
+<button class="accordion">Section 2</button>
+<div class="panel">
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, cumque!.</p>
+</div>
+
+<button class="accordion">Section 3</button>
+<div class="panel">
+  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis totam placeat iste? Dolores beatae sunt quod repellat illum impedit consequatur nisi architecto. Odit exercitationem, omnis autem neque est et consequuntur?</p>
+</div>
+
+<button class="accordion">Section 4</button>
+<div class="panel">
+  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore, beatae quidem! Impedit quod magnam nihil, id nisi amet iusto consequuntur.</p>
+</div>
+
+<button class="accordion">Section 5</button>
+<div class="panel">
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, cumque!.</p>
+</div>
+
+<button class="accordion">Section 6</button>
+<div class="panel">
+  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis totam placeat iste? Dolores beatae sunt quod repellat illum impedit consequatur nisi architecto. Odit exercitationem, omnis autem neque est et consequuntur?</p>
+</div>
+
+<button class="accordion">Section 4</button>
+<div class="panel">
+  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore, beatae quidem! Impedit quod magnam nihil, id nisi amet iusto consequuntur.</p>
+</div>
+
+<button class="accordion">Section 5</button>
+<div class="panel">
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, cumque!.</p>
+</div>
+
+<button class="accordion">Section 6</button>
+<div class="panel">
+  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis totam placeat iste? Dolores beatae sunt quod repellat illum impedit consequatur nisi architecto. Odit exercitationem, omnis autem neque est et consequuntur?</p>
+</div>
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  });
+}
+</script>
+</section>
+
+{% endblock %}

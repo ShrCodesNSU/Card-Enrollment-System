@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+<section>
+<div class="complaints">
+<p>Complete this form to submit a complaint or compliment about a Metro Transit employee or transit service. Please be sure to be as complete as possible so that we can identify the employee or transit service (bus route or train) and forward your comments to the employee’s supervisor or department to take appropriate action.</p>
+<h3>Contact Form</h3>
+<div class="complaint-container">
+  <form action="/action_page.php">
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+    
+    <label for="email">Email</label>
+    <input type="text" id="email" name="email" placeholder="arvin@example.com">
+
+
+    <label for="subject">Comments</label>
+    <textarea id="subject" name="subjects" placeholder="Write something.." style="height:200px"></textarea>
+
+    <input type="submit" value="Submit">
+  </form>
+</div>
+</section>
+
+{% endblock %}
