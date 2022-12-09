@@ -28,6 +28,20 @@ nav{
     padding: 8px 12px;
     position: relative;
 }
+.nav-links ul a{
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.nav-links ul a:hover{
+  color: white;
+  transition: 0.1s;
+  background: orange;
+  text-decoration: none;
+  font-size: 17px;
+}
+
 .nav-links ul li a{
     color: white;
     text-decoration: none;
@@ -468,7 +482,10 @@ input[type=submit]:hover {
 .about-section {
   padding: 50px;
   text-align: center;
+  width: 75%;
+  margin: auto;
   background-color: #474e5d;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
   color: white;
 }
 
