@@ -23,6 +23,7 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 
 @app.route("/")
+@app.route("/Home")
 def index():
     return render_template("landing.html")
 

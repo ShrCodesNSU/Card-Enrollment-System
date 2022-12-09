@@ -230,6 +230,10 @@ nav .fa{
     align-items: center;
 }
 
+.signup-wrapper a{
+  font-size: small;
+  color: orange; 
+}
 
 .form {
     position: relative;
@@ -300,6 +304,7 @@ nav .fa{
   }
 .submit-btn {
     display: block;
+    margin-top: 50px;
     margin-left: auto;
     border: none;
     outline: none;
@@ -349,7 +354,9 @@ nav .fa{
 /*--Transaction--*/
 
 .title{
-    margin-left: 100px;
+    margin: auto;
+    text-align: center;
+    font-weight: 700;
    
 }
 
@@ -436,6 +443,8 @@ nav .fa{
     text-align: center;
     margin: 0 auto;
     padding:20px;
+    
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
 }
 
 .complaints p{
@@ -445,7 +454,13 @@ nav .fa{
   text-align: left;
   padding: 20px;
   background-color: azure;
+  border: 1px solid rgb(132, 249, 249);
 }
+
+.complaints h3{
+  margin: 50px 0px 10px 0px;
+}
+
 
 input[type=text], select, textarea {
   width: 100%;
@@ -493,8 +508,9 @@ input[type=submit]:hover {
 
 .FAQ-Container{
   max-width: 1000px;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
   background-color: #e4f9f5;
-  margin: 0 auto;
+  margin: 80px auto;
   padding:20px
 }
 
@@ -503,7 +519,11 @@ input[type=submit]:hover {
 }
 
 .accordion {
-  background-color: #eee;
+
+  border-radius: 30px 30px 30px 30px;
+
+  margin: 15px 0px 0px 0px;
+  background-color: rgb(237, 234, 234);
   color: #444;
   cursor: pointer;
   padding: 18px;
@@ -519,8 +539,14 @@ input[type=submit]:hover {
   background-color: #ccc; 
 }
 
+.active{
+  transition: max-height 0.2s ease-out;
+  border-radius: 30px 30px 0px 0px;
+}
+
 .panel {
-  padding: 0 18px;
+  padding: 0px 0px 0px 18px;
+  border-radius: 0px 0px 30px 30px;
   background-color: white;
   max-height: 0;
   overflow: hidden;
