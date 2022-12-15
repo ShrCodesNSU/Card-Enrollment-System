@@ -1,13 +1,17 @@
 from flask import Flask, flash, jsonify, redirect, render_template, request, session, send_file
 from flask_session import Session
+
+from flask_sqlalchemy import SQLAlchemy 
+
+
 import sqlite3, os, time, fnmatch
 from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 from cs50 import SQL
-from datetime import date
+from datetime import date 
 
 # Initializing the database
-#db = SQL("sqlite:///data.db")
+db = SQL("sqlite:///metroRail.db")
 
 # Setting up the flask environment
 app = Flask(__name__)
@@ -15,6 +19,14 @@ app = Flask(__name__)
 app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
+
+#app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:@localhost/metroraileticket.sql"
+#db = SQLAlchemy(app)
+
+
+
+
+
 Session(app)
 
 RegOrLogin = 0
@@ -25,7 +37,9 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 @app.route("/")
 @app.route("/Home")
 def index():
-    return render_template("landing.html")
+    
+    rows = db.execute("SELECT * FROM accounts")
+    return render_template("landing.html", rows=rows)
 
 @app.route("/AboutUs")
 def AboutUs():
