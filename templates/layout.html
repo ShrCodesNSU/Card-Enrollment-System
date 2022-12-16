@@ -28,10 +28,19 @@
                 <li><a href="Transaction">Transaction</a></li>
                 <li><a href="TripsAndBooking">Trips</a></li>
                 <li><a href="Complaints">Complaints</a></li>
+
+
+                {% if session.user_id %}
+                <a href="Logout" style="border: 1px solid orange; padding: 10px 15px 10px 15px;  border-radius: 10px; ">Logout</a>
+                
+
+                {% else %}
                 <a href="Login" style="border: 1px solid orange; padding: 10px 15px 10px 15px;  border-radius: 10px; ">Login</a>
                 <li style="color: white;">/</li>
                 <a href="SignUp"><button type="button" class="btn btn-warning">Sign-up</button></a>
-                  
+                {% endif %}
+
+
             </ul>
         </div>
         <i class="fa fa-bars" onclick="showMenu()"></i>
