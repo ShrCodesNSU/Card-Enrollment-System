@@ -24,13 +24,13 @@
                 <li><a href="Home">Home</a></li>
                 <li><a href="AboutUs">About</a></li>
                 <li><a href="FAQ">FAQ</a></li>
+
+
+                {% if session.user_id %}
                 <li><a href="Metrocard">Metrocard</a></li>
                 <li><a href="Transaction">Transaction</a></li>
                 <li><a href="TripsAndBooking">Trips</a></li>
                 <li><a href="Complaints">Complaints</a></li>
-
-
-                {% if session.user_id %}
                 <a href="Logout" style="border: 1px solid orange; padding: 10px 15px 10px 15px;  border-radius: 10px; ">Logout</a>
                 
 
