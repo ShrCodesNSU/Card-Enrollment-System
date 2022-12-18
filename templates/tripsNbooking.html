@@ -3,9 +3,59 @@
 
 {% block body %}
 
+
 <section>
-    
+    <div class="Trip_box">
+        <form action="" class="form">
+            <h2>Reservation Form</h2>
+            <div class="input-group">
+                <input type="text" name="signupUser" id="signupUser" required />
+                <label for="signupUser">Enter TripID</label>
+            </div>
+
+            <div class="input-group">
+                <input type="text" name="signupUser" id="signupUser" required />
+                <label for="signupUser">Enter Name of Train</label>
+            </div>
+
+             <div class="input-group">
+                <input type="date" name="signupUser" id="signupUser" required />
+                <label for="signupUser"></label>
+              </div>
+              
+              <div class="input-group">
+                <div class="content">
+                <div class="div-left">
+                <h6>Trip Start Time</h6>
+                <input type="time" name="signupUser" id="signupUser" required />
+                <label for="signupUser"></label>
+                </div>
+                <div class="div-right">
+                <h6>Trip End Time</h6>
+                <input type="time" name="signupUser" id="signupUser" required />
+                <label for="signupUser"></label>
+                </div>
+                </div>
+              </div>
+              
+              <h3>Trip Type</h3>
+              <div class="radio-btn">
+                <input type="radio" class="btn" name="check" checked="checked"><span>RoundTrip</span>
+                <input type="radio" class="btn" name="check"><span>One-Trip</span>
+              </div>  
+
+              <div class="input-group">
+                <input type="text" name="signupUser" id="signupUser" required />
+                <label for="signupUser">Enter Destinations</label>
+              </div>  
+              <input type="submit" value="Submit" class="submit-btn" />
+
+        </form>
+    </div>
 </section>
+
+
+
 
 
 {% endblock %}

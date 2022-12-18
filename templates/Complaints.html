@@ -2,24 +2,28 @@
 
 
 {% block body %}
-<section>
+<section style="margin-top: 70px;">
 <div class="complaints">
 <p>Complete this form to submit a complaint or compliment about a Metro Transit employee or transit service. Please be sure to be as complete as possible so that we can identify the employee or transit service (bus route or train) and forward your comments to the employee’s supervisor or department to take appropriate action.</p>
-<h3>Contact Form</h3>
+
+{% if submission == true and warning != 1 %}
+<p style="text-align: center; background: rgba(116, 244, 116, 0.43);">Form Submitted</p>
+{% endif %}
+
+{% if warning == 1 %}
+<p style="text-align: center; background: rgba(252, 17, 0, 0.43);">Missing Informatoins</p>
+{% endif %}
+
+<h3 class="title" style="margin-bottom: 20px;">Complaint Form</h3>
 <div class="complaint-container">
-  <form action="/action_page.php">
-    <label for="fname">First Name</label>
-    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+  <form action="/Complaints" method="post" style="margin-top: 20px;">
 
-    <label for="lname">Last Name</label>
-    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-    
-    <label for="email">Email</label>
-    <input type="text" id="email" name="email" placeholder="arvin@example.com">
+    <label for="subject">Subject</label>
+    <input type="text" id="subject" name="subject" placeholder="The Subject of your Complaint">
 
 
-    <label for="subject">Comments</label>
-    <textarea id="subject" name="subjects" placeholder="Write something.." style="height:200px"></textarea>
+    <label for="description">Comments</label>
+    <textarea id="description" name="description" placeholder="Give a brief description of your issue.." style="height:200px"></textarea>
 
     <input type="submit" value="Submit">
   </form>
