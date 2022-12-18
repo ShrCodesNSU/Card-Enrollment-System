@@ -12,7 +12,7 @@ from cs50 import SQL
 from datetime import date 
 
 # Initializing the database
-db = SQL("sqlite:///metroRail.db")
+db = SQL("sqlite:///database.db")
 
 # Setting up the flask environment
 app = Flask(__name__)
@@ -57,7 +57,7 @@ def Complaints():
         compDesc = request.form.get("description")
         
         print(session["user_id"], file=sys.stderr)
-        db.execute("INSERT INTO complaintTab (accId, ComplaintText, complaintSub) VALUES (:userID, :desc, :sub)", userID=int(session["user_id"]), desc = compDesc, sub = compSub)
+        db.execute("INSERT INTO complaint (AccId, ComplaintText, ComplaintSubj) VALUES (:userID, :desc, :sub)", userID=int(session["user_id"]), desc = compDesc, sub = compSub)
         
         return render_template("Complaints.html", submission=True, warning = 0)
     else:
@@ -89,14 +89,14 @@ def login(warning = 0):
         
 
         # Query the database for user credentials
-        rows = db.execute("SELECT * FROM accounts WHERE Username = :username", username=username)
+        rows = db.execute("SELECT * FROM accounts WHERE Name = :username", username=username)
 
         # Ensure the user exists and their password is correct
-        if len(rows) != 1 or not rows[0]["Password1"] == password:
+        if len(rows) != 1 or not rows[0]["Password"] == password:
             return render_template("Login.html",warning = 1)
 
         # Hold the user's session
-        session["user_id"] = int(rows[0]["accId"])
+        session["user_id"] = int(rows[0]["AccId"])
         session["accType"] = (rows[0]["AccType"])
 
         # Redirect user to home page
