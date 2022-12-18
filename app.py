@@ -38,7 +38,7 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 @app.route("/")
 @app.route("/Home")
 def index():    
-    return render_template("landing.html", rows=rows)
+    return render_template("landing.html", rows=[])
 
 @app.route("/AboutUs")
 def AboutUs():
@@ -97,6 +97,7 @@ def login(warning = 0):
 
         # Hold the user's session
         session["user_id"] = int(rows[0]["accId"])
+        session["accType"] = (rows[0]["AccType"])
 
         # Redirect user to home page
         return redirect("/")

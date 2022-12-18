@@ -26,6 +26,12 @@
                 <li><a href="FAQ">FAQ</a></li>
 
 
+
+                {% if session.accType == "user" %}
+                    <li><a href="Metrocard">Apply</a></li>
+                {% endif %}
+
+
                 {% if session.user_id %}
                 <li><a href="Metrocard">Metrocard</a></li>
                 <li><a href="Transaction">Transaction</a></li>
@@ -33,7 +39,6 @@
                 <li><a href="Complaints">Complaints</a></li>
                 <a href="Logout" style="border: 1px solid orange; padding: 10px 15px 10px 15px;  border-radius: 10px; ">Logout</a>
                 
-
                 {% else %}
                 <a href="Login" style="border: 1px solid orange; padding: 10px 15px 10px 15px;  border-radius: 10px; ">Login</a>
                 <li style="color: white;">/</li>
