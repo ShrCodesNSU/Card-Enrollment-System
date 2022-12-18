@@ -137,8 +137,6 @@ def SignUp(warning = 0):
             app.logger.info("ph1 = " + phone1)
            # app.logger.info("ph2 = " + phone2)
            
-            db.execute("ALTER TABLE accounts AUTO_INCREMENT = (SELECT MAX( 'AccId' ) FROM acccounts ;)")
-           
            
             db.execute("INSERT INTO accounts(Name, Email, Gender, Password, AccType) VALUES (:name, :email, :gender,  :password,  'User')", name=username, email=email, gender=gender, password=password)
             userIdNew = db.execute("SELECT * from accounts order by AccId DESC limit 1")
