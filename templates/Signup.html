@@ -2,19 +2,33 @@
 
 
 {% block body %}
-  
+
+{% if warning == 1 %}
+
+    <h1 class="title" style="color: red;">Wrong Info</h1>
+
+{% endif %}
 <section>
     <div class="signup-wrapper">
-        <form action="" class="form">
-          <h2 class="title">SignUp</h2>
+        <form action="/SignUp" method="post" class="form">
+          <h2>SignUp</h2>
           <div class="input-group">
             <input type="text" name="signupUser" id="signupUser" required />
-            <label for="signupUser">First Name</label>
+            <label for="signupUser">Username</label>
           </div>
 
+   
+          
+          <label for="signupGender">Gender</label>
+          <div class="radio-btn">
+            <input type="radio" class="btn" name="check" checked="checked" value="Male"><span>Male</span>
+            <input type="radio" class="btn" name="check" value="Female"><span>Female</span>
+          </div>
+
+       
           <div class="input-group">
-            <input type="text" name="signupUser" id="signupUser" required />
-            <label for="signupUser">Last Name</label>
+            <input type="text" name="signupEmail" id="signupUser" required />
+            <label for="signupEmail">Email</label>
           </div>
           <div class="input-group">
             <input
@@ -25,16 +39,23 @@
             />
             <label for="signupPassword">Create Password</label>
           </div>
+          
+          
+
           <div class="input-group">
-            <input
-              type="password"
-              name="signupPassword"
-              id="signupPassword"
-              required
-            />
-            <label for="signupPassword">Re-Enter Password</label>
+            <input type="text" name="phone1" id="signupUser" required />
+            <label for="phone1">Enter Phone Number1</label>
           </div>
-          <a href="Login">Already have an account? Login here</a>
+
+
+          <div class="input-group">
+            <input type="text" name="phone2" id="signupUser"  />
+            <label for="phone2">Enter Phone Number2</label>
+          </div>
+          
+      
+          
+
           <input type="submit" value="SignUp" class="submit-btn" />
         </form>
       </div>

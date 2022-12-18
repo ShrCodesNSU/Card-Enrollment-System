@@ -105,6 +105,68 @@ def login(warning = 0):
         return render_template("Login.html", warning=0)
 
 
+
+
+
+@app.route("/SignUp", methods=["GET", "POST"])
+def SignUp(warning = 0):
+    if request.method == "POST":
+            # Verify that the input fields are not empty
+            if not request.form.get("signupUser"):
+                return render_template("Signup.html", warning = 1)
+            if not request.form.get("check"):
+                return render_template("Signup.html",warning = 1)
+            if not request.form.get("signupPassword"):
+                return render_template("Signup.html",warning = 1)
+            if not request.form.get("signupEmail"):
+                return render_template("Signup.html",warning = 1)
+            if not request.form.get("phone1"):
+                return render_template("Signup.html",warning = 1)
+            
+            
+            # Store the user input
+            username = request.form.get("signupUser")
+            email = request.form.get("signupEmail")
+            password =  request.form.get("signupPassword")
+            gender = request.form.get("check")
+            phone1 = request.form.get("phone1")
+            
+                
+            app.logger.info("name = " + username)
+            app.logger.info("gender = " + gender)
+            app.logger.info("ph1 = " + phone1)
+           # app.logger.info("ph2 = " + phone2)
+           
+            db.execute("ALTER TABLE accounts AUTO_INCREMENT = (SELECT MAX( 'AccId' ) FROM acccounts ;)")
+           
+           
+            db.execute("INSERT INTO accounts(Name, Email, Gender, Password, AccType) VALUES (:name, :email, :gender,  :password,  'User')", name=username, email=email, gender=gender, password=password)
+            userIdNew = db.execute("SELECT * from accounts order by AccId DESC limit 1")
+            
+            
+            
+            db.execute("INSERT INTO phone(AccId, PhoneNumber) VALUES (:userID, :ph1)", userID=int(userIdNew[0]["AccId"]), ph1=phone1)
+            
+            if request.form.get("phone2"):
+                phone2 = request.form.get("phone2")
+                db.execute("INSERT INTO phone(AccId, PhoneNumber) VALUES (:userID, :ph2)", userID=int(userIdNew[0]["AccId"]), ph2=phone2)
+            
+            return render_template("Login.html", warning = 0)
+
+    else:   
+        return render_template("Signup.html", warning = 0)
+
+
+
+
+
+
+
+
+
+
+
+
 @app.route("/Logout")
 def logout():
     # Clear the current session to log the user out, and redirect them to the homepage
@@ -125,9 +187,6 @@ def logout():
 def metrocard():
     return render_template("Metrocard.html")
 
-@app.route("/SignUp")
-def SignUp():
-    return render_template("Signup.html")
 
 
 @app.route("/Transaction")
