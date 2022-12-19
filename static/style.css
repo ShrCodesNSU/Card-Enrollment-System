@@ -553,11 +553,6 @@ input[type=submit]:hover {
   border-top: none;
 }
 
-.panel:active{
-  border-radius: 0px 0px 30px 30px;
-  border-bottom: 1px solid gray;
-
-}
 
 /*--Card Delivery--*/
 
