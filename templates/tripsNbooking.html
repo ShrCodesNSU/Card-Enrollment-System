@@ -3,10 +3,14 @@
 
 {% block body %}
 
+{% if warning == 1 %}
 
+    <h1 class="title" style="color: rgb(0, 248, 0);">Trip Created</h1>
+
+{% endif %}
 <section>
-  <div class="Trip_box">
-    <form action="" class="form">
+  <div  class="Trip_box">
+    <form action="/TripsAndBooking" method="post" class="form">
       <h2>Reservation Form</h2>
 
 
@@ -16,14 +20,14 @@
       </div>
 
       <div class="input-group">
-        <input type="date" name="date" id="date" required />
-        <label for="date"></label>
+        <input type="text" name="date" id="date" required />
+        <label for="date">Date (yyyy-mm-dd)</label>
       </div>
 
 
       <div class="input-group">
-        <input type="text" name="dest" id="dest"  required />
-        <label for="dest">Start Time(hh:mm:ss)</label>
+        <input type="text" name="stTime" id="stTime"  required />
+        <label for="stTime">Start Time(hh:mm:ss)</label>
       </div>
 
         <div class="input-group">

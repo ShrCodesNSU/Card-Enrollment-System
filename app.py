@@ -191,6 +191,35 @@ def metrocard():
 def Transaction():
     return render_template("Transaction.html")
 
-@app.route("/TripsAndBooking")
-def tripsNbooking():
-    return render_template("tripsNbooking.html")
+@app.route("/TripsAndBooking", methods=["GET", "POST"])
+def tripsNbooking(warning = 0):
+    app.logger.info("Logging: ")
+    app.logger.info(request.method)
+    if request.method == "POST":
+        
+        # Store the user input
+        trainName = request.form.get("trainName")
+        date = request.form.get("date")
+        stTime = request.form.get("stTime")
+        dest = request.form.get("dest")
+        totSeat = request.form.get("totSeat")
+        AvailSeat = totSeat
+        cost = request.form.get("cost")
+
+            
+
+        app.logger.info("Logging: ")
+        app.logger.info(trainName)
+        app.logger.info(date)
+        app.logger.info(stTime)
+        app.logger.info(dest)
+        app.logger.info(totSeat)
+        app.logger.info(AvailSeat)
+        app.logger.info(cost)
+        db.execute("INSERT INTO trip(TrainName, Date, TripTime, Dest, AvailSeat, TotalSeat, Cost) Values(:trainName, :date, :tripTime, :dest, :availSeat, :totSeat, :cost)", trainName=trainName, date=date, tripTime=stTime, dest=dest, availSeat=AvailSeat, totSeat=totSeat, cost=cost)
+
+
+        return render_template("tripsNbooking.html", warning = 2)
+
+    else:   
+        return render_template("tripsNbooking.html", warning = 0)
