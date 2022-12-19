@@ -1,0 +1,17 @@
+Completed pages: 
+
+html => linked tables
+
+1. login => accounts, userAccount
+
+2. signup => accounts, phone
+
+3. FAQ => FAQtable
+
+4. Complaints => accounts, ComplaintsTable
+
+5. tripsNbooking => accounts, trips
+
+6. Metrocard => accounts, cardDelivery
+
+7. Logout => accounts

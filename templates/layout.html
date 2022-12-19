@@ -25,10 +25,14 @@
                 <li><a href="AboutUs">About</a></li>
                 <li><a href="FAQ">FAQ</a></li>
 
+                
+                {% if session.userVerif == "Yes" %}
+                    <li><a href="Metrocard">Metrocard</a></li>
+
+                {% endif %}
 
 
-                {% if session.accType == "user" %}
-                    <li><a href="Metrocard">Apply</a></li>
+                {% if session.accType == "User" %}
                     <li><a href="Transaction">Transaction</a></li>
                     <li><a href="Complaints">Complaints</a></li>
                 {% endif %}

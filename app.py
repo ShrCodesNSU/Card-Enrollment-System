@@ -98,7 +98,11 @@ def login(warning = 0):
         # Hold the user's session
         session["user_id"] = int(rows[0]["AccId"])
         session["accType"] = (rows[0]["AccType"])
-
+        userVerif = db.execute("SELECT * from userAccount WHERE AccId = :accId", accId = session["user_id"])
+        if not userVerif:
+            session["userVerif"] = None
+        else:
+            session["userVerif"] = userVerif[0]["IsVerified"]
         # Redirect user to home page
         return redirect("/")
     else:
@@ -149,6 +153,7 @@ def SignUp(warning = 0):
                 phone2 = request.form.get("phone2")
                 db.execute("INSERT INTO phone(AccId, PhoneNumber) VALUES (:userID, :ph2)", userID=int(userIdNew[0]["AccId"]), ph2=phone2)
             
+            
             return render_template("Login.html", warning = 0)
 
     else:   
@@ -183,7 +188,9 @@ def logout():
 
 @app.route("/Metrocard")
 def metrocard():
-    return render_template("Metrocard.html")
+    cardDel = db.execute("SELECT * from cardDelivery WHERE AccId = :accId", accId = session["user_id"])
+        
+    return render_template("Metrocard.html", delId = cardDel[0]["DeliveryId"], delTime =  cardDel[0]["DelDate"], delStat = cardDel[0]["DelStat"])
 
 
 
