@@ -674,18 +674,25 @@ input[type=submit]:hover {
   color: white;
   font-size: 0.8rem;
 }
-.submit-btn {
+.verif-btn {
   display: block;
+  margin-top: 30px;
   margin-left: auto;
+  margin-right: 50px;
+  color: white;
   border: none;
   outline: none;
-  background: #ff652f;
+  background: #04AA6D;
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.verif-btn:hover{
+  background-color: #1a6c1e;
 }
 
 

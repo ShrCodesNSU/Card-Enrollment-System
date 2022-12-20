@@ -27,7 +27,6 @@
 
                 
                 
-                <li><a href="VerifyUser">VerifyUser</a></li>
     
 
                 {% if session.hasCard == "True" %}    
@@ -50,6 +49,7 @@
 
 
                 {% if session.accType == "Oficial" %}
+                    <li><a href="VerifyUser">VerifyUser</a></li>
                     <li><a href="TripsAndBooking">Create Trips</a></li>
                 {% endif %}
 

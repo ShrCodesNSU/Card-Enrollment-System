@@ -91,7 +91,15 @@ def FAQ():
 
 @app.route("/VerifyUser", methods=["GET", "POST"])
 def VerifyUser():
-    return render_template("offUserVerf.html")
+    if request.method == "POST":
+        acc = request.form.get("userId")
+        db.execute("UPDATE userAccount SET IsVerified = 'YES' WHERE AccId = :accId", accId=acc)
+        allReqs = db.execute('SELECT accounts.AccId,Name,Email,Gender,NID,DOB FROM accounts, userAccount WHERE accounts.AccId = userAccount.AccId AND userAccount.IsVerified = "Pending"')
+        return render_template("offUserVerf.html", allReqs=allReqs)
+
+    else:
+        allReqs = db.execute('SELECT accounts.AccId,Name,Email,Gender,NID,DOB FROM accounts, userAccount WHERE accounts.AccId = userAccount.AccId AND userAccount.IsVerified = "Pending"')
+        return render_template("offUserVerf.html", allReqs=allReqs)
 
 
 

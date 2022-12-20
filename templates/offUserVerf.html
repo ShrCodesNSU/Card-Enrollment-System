@@ -7,193 +7,53 @@
 
 <section>
   <h2 style="text-align: center">Biometric Verification</h2>
-<table>
-  <tr>
-    <th>Information Type</th>
-    <th>Information Value</th>
-  </tr>
-  <tr>
-    <td>Username</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>NID</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>UserID</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>AccID</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Date of Birth</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Gender</td>
-    <td></td>
-  </tr>
-</table><br>
 
 
-<table>
-  <tr>
-    <th>Information Type</th>
-    <th>Information Value</th>
-  </tr>
-  <tr>
-    <td>Username</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>NID</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>UserID</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>AccID</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Date of Birth</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Gender</td>
-    <td></td>
-  </tr>
-</table><br>
+  {% for req in allReqs %}
+  <table>
+    <tr>
+      <th>Information Type</th>
+      <th>Information Value</th>
+    </tr>
+    <tr>
+      <td>UserID</td>
+      <td>{{req["AccId"]}}</td>
+    </tr>
+    <tr>
+      <td>Username</td>
+      <td>{{req["Name"]}}</td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td>{{req["Email"]}}</td>
+    </tr>
+    <tr>
+      <td>NID</td>
+      <td>{{req["NID"]}}</td>
+    </tr>
+    <tr>
+      <td>Date of Birth</td>
+      <td>{{req["DOB"]}}</td>
+    </tr>
+    <tr>
+      <td>Gender</td>
+      <td>{{req["Gender"]}}</td>
+    </tr>  
+    <tr>
+      <td></td>
+      <td>       
+        <form action="/VerifyUser" method="POST" >
+          <button class="verif-btn" type="submit" name="userId" value="{{  req['AccId']  }}">Verify</button> 
+        </form>
+      </td>
+    </tr>
+    
+  </table><br>
 
-<table>
-  <tr>
-    <th>Information Type</th>
-    <th>Information Value</th>
-  </tr>
-  <tr>
-    <td>Username</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>NID</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>UserID</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>AccID</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Date of Birth</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Gender</td>
-    <td></td>
-  </tr>
-</table><br>
-
-<table>
-  <tr>
-    <th>Information Type</th>
-    <th>Information Value</th>
-  </tr>
-  <tr>
-    <td>Username</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>NID</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>UserID</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>AccID</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Date of Birth</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Gender</td>
-    <td></td>
-  </tr>
-</table><br>
+{% endfor %}
 
 
-<table>
-  <tr>
-    <th>Information Type</th>
-    <th>Information Value</th>
-  </tr>
-  <tr>
-    <td>Username</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>NID</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>UserID</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>AccID</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Date of Birth</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Gender</td>
-    <td></td>
-  </tr>
-</table><br>
 
-<table>
-  <tr>
-    <th>Information Type</th>
-    <th>Information Value</th>
-  </tr>
-  <tr>
-    <td>Username</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>NID</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>UserID</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>AccID</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Date of Birth</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Gender</td>
-    <td></td>
-  </tr>
-</table>
 </section>
 
 

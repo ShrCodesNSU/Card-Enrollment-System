@@ -20,9 +20,11 @@ html => linked tables
 
 9. userverification => account status, account
 
+10. official user verification => accounts, userAccount
+
+
 Incomplete:
 
-2. official user verification
 3. official bio verification
 6. booking 
 7. traindelete
