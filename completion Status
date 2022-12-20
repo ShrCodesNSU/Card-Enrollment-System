@@ -15,3 +15,15 @@ html => linked tables
 6. Metrocard => accounts, cardDelivery
 
 7. Logout => accounts
+
+4. transaction => transaction,  cardStatus, accounts
+
+
+Incomplete:
+
+1. userverification
+2. official user verification
+3. official bio verification
+5. account status
+6. booking 
+7. traindelete

@@ -28,12 +28,16 @@
                 
                 {% if session.userVerif == "Yes" %}
                     <li><a href="Metrocard">Metrocard</a></li>
-
                 {% endif %}
 
 
+                {% if session.hasCard == "True" %}    
+                    <li><a href="Transaction">Transaction</a></li>                
+                {% endif %}
+
+
+
                 {% if session.accType == "User" %}
-                    <li><a href="Transaction">Transaction</a></li>
                     <li><a href="Complaints">Complaints</a></li>
                 {% endif %}
 

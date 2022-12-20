@@ -104,6 +104,14 @@ def login(warning = 0):
         else:
             session["userVerif"] = userVerif[0]["IsVerified"]
         # Redirect user to home page
+        
+        cardDel = db.execute("SELECT * FROM cardDelivery WHERE AccId = :accId", accId = session["user_id"])
+        
+        session["hasCard"] = "False"
+        if session["userVerif"] == "Yes":
+            if cardDel[0]["DelStat"] == "Delivered":
+                session["hasCard"] = "True"
+            
         return redirect("/")
     else:
         return render_template("Login.html", warning=0)
@@ -194,9 +202,35 @@ def metrocard():
 
 
 
-@app.route("/Transaction")
-def Transaction():
-    return render_template("Transaction.html")
+
+
+
+
+
+@app.route("/Transaction", methods=["GET", "POST"])
+def Transaction():    
+    if request.method == "POST":
+        amount = request.form.get("Amount")
+        date = request.form.get("Date")
+    
+        app.logger.info(amount)
+        app.logger.info(date)
+        app.logger.info(session["user_id"])
+        app.logger.info(session["user_id"] + 100)
+        db.execute("INSERT INTO transactions(AccId, CardId, Amount, Date) Values(:acc, :card, :amnt, :date)", acc=int(session["user_id"]),  card=int(session["user_id"]) + 100, amnt=amount, date=date)
+
+        cardInfo = db.execute("SELECT * FROM accountStatus cardDelivery WHERE AccId = :accId", accId = session["user_id"])
+        db.execute("UPDATE accountStatus SET Balance= :bal", bal = int(amount) + int(cardInfo[0]["Balance"]))
+        return render_template("landing.html")
+    else:
+        return render_template("Transaction.html")
+
+
+
+
+
+
+
 
 @app.route("/TripsAndBooking", methods=["GET", "POST"])
 def tripsNbooking(warning = 0):
