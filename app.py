@@ -5,6 +5,8 @@ import sys
 from flask_sqlalchemy import SQLAlchemy 
 import logging
 
+import random
+
 import sqlite3, os, time, fnmatch
 from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -53,7 +55,7 @@ def Apply():
         dob = request.form.get("dob")
         
         db.execute("UPDATE userAccount SET NID=:nid, DOB=:dob, IsVerified='Pending' WHERE AccId = :acc", acc= session["user_id"], nid=nid, dob=dob)
-    
+       
         return render_template("landing.html")
 
     else:
@@ -93,8 +95,16 @@ def FAQ():
 def VerifyUser():
     if request.method == "POST":
         acc = request.form.get("userId")
-        db.execute("UPDATE userAccount SET IsVerified = 'YES' WHERE AccId = :accId", accId=acc)
+        stat = request.form.get("check")
+        db.execute("UPDATE userAccount SET IsVerified = :stat WHERE AccId = :accId", accId=acc, stat=stat)
         allReqs = db.execute('SELECT accounts.AccId,Name,Email,Gender,NID,DOB FROM accounts, userAccount WHERE accounts.AccId = userAccount.AccId AND userAccount.IsVerified = "Pending"')
+        
+        if stat == "YES":
+            bioDate = "2023-" + str(random.randint(1,12)) + "-" + str(random.randint(1,30))
+            db.execute("INSERT INTO verifications(AccId,  BioStat, BioDate) VALUES (:acc, 'Pending', :date)", acc=acc, date=bioDate)
+        
+        
+        
         return render_template("offUserVerf.html", allReqs=allReqs)
 
     else:

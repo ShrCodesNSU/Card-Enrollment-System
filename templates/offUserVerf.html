@@ -40,10 +40,18 @@
       <td>{{req["Gender"]}}</td>
     </tr>  
     <tr>
-      <td></td>
+      <td>     
+        
+      </td>
       <td>       
         <form action="/VerifyUser" method="POST" >
-          <button class="verif-btn" type="submit" name="userId" value="{{  req['AccId']  }}">Verify</button> 
+          <div class="radio-btn">
+            <input type="radio" class="btn" name="check" checked="checked" value="YES"><span>Approve</span>
+            <input type="radio" class="btn" name="check" value="No"><span>Reject</span>
+            <button class="verif-btn" type="submit" name="userId" value="{{  req['AccId']  }}">Verify</button>
+        </div>
+          
+           
         </form>
       </td>
     </tr>
