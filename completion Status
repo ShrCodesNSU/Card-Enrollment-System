@@ -16,14 +16,13 @@ html => linked tables
 
 7. Logout => accounts
 
-4. transaction => transaction,  cardStatus, accounts
+8. transaction => transaction,  cardStatus, accounts
 
+9. userverification => account status, account
 
 Incomplete:
 
-1. userverification
 2. official user verification
 3. official bio verification
-5. account status
 6. booking 
 7. traindelete

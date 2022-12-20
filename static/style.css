@@ -571,6 +571,145 @@ input[type=submit]:hover {
 }
 
 
+/*--User Verification--*/
+
+.UserApply_Wrapper{
+  padding:50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.radio-btn{
+  margin: 0 20px;
+}
+
+.radio-btn .btn{
+  margin: 20px 10px 20px 0;
+}
+
+.radio-btn .btn::after{
+ content:'';
+ height: 15px;
+ width: 15px;
+ top: -2px;
+ left: -1px;
+ background-color: #fff;
+ position: relative;
+ display: inline-block;
+ border: 3px solid azure;
+ border-radius: 50%;
+}
+
+.radio-btn .btn:checked::after{
+ content:'';
+ background-color: black;
+ transition: 0.5s;
+}
+
+.form {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  padding: 80px 40px 40px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  color: #fff;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+}
+.form::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  transform: skewX(-26deg);
+  transform-origin: bottom left;
+  border-radius: 10px;
+  pointer-events: none;
+}
+.form img {
+  position: absolute;
+  top: -50px;
+  left: calc(50% - 50px);
+  width: 100px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+}
+.form h2 {
+  text-align: center;
+  letter-spacing: 1px;
+  margin-bottom: 2rem;
+  color: white;
+}
+.form .User_Group {
+  position: relative;
+}
+.form .User_Group input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background-color: transparent;
+  color: inherit;
+}
+.form .User_Group label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 1rem;
+  pointer-events: none;
+  transition: 0.3s ease-out;
+}
+.form .User_Group input:focus + label,
+.form .User_Group input:valid + label {
+  transform: translateY(-18px);
+  color: white;
+  font-size: 0.8rem;
+}
+.submit-btn {
+  display: block;
+  margin-left: auto;
+  border: none;
+  outline: none;
+  background: #ff652f;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+/*--BioMetricVerification--*/
+
+tr:hover {background-color: coral;}
+
+table {
+  border-collapse: collapse;
+  width: 1000px;
+  margin: 0 auto;
+}
+
+th, td {
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: #04AA6D;
+  color: white;
+}
 
 
 /*--Metro Card--*/

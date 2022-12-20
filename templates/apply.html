@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+
+{%block title%} home {% endblock %}
+
+{% block body %}
+<section>
+    <div class="UserApply_Wrapper">
+      <form action="/Apply" method="post" class="form">
+          <h2>Apply For Verification</h2>
+          <div class="User_Group">
+            <input type="text" name="verNid" id="verNid" required />
+            <label for="verNid">Enter NID</label>
+          </div>
+  
+          <div class="User_Group">
+            <input type="text" name="dob" id="dob" required />
+            <label for="dob">DOB (yyyy-mm-dd)</label>
+          </div>
+  
+
+  
+          <input type="submit" value="Submit" class="submit-btn" />
+        </form>
+  </section>
+
+
+  {% endblock %}

@@ -44,6 +44,24 @@ def index():
 def AboutUs():
     return render_template("AboutUs.html")
 
+
+
+@app.route("/Apply", methods = ["POST", "GET"])
+def Apply():    
+    if request.method == "POST":
+        nid = request.form.get("verNid")
+        dob = request.form.get("dob")
+        
+        db.execute("UPDATE userAccount SET NID=:nid, DOB=:dob, IsVerified='Pending' WHERE AccId = :acc", acc= session["user_id"], nid=nid, dob=dob)
+    
+        return render_template("landing.html")
+
+    else:
+        return render_template("apply.html")
+
+
+
+
 @app.route("/Complaints", methods = ["POST", "GET"])
 def Complaints():
     if request.method == "POST":
@@ -71,6 +89,9 @@ def FAQ():
 
 
 
+@app.route("/VerifyUser", methods=["GET", "POST"])
+def VerifyUser():
+    return render_template("offUserVerf.html")
 
 
 
@@ -100,7 +121,7 @@ def login(warning = 0):
         session["accType"] = (rows[0]["AccType"])
         userVerif = db.execute("SELECT * from userAccount WHERE AccId = :accId", accId = session["user_id"])
         if not userVerif:
-            session["userVerif"] = None
+            session["userVerif"] = "No"
         else:
             session["userVerif"] = userVerif[0]["IsVerified"]
         # Redirect user to home page
@@ -161,7 +182,8 @@ def SignUp(warning = 0):
                 phone2 = request.form.get("phone2")
                 db.execute("INSERT INTO phone(AccId, PhoneNumber) VALUES (:userID, :ph2)", userID=int(userIdNew[0]["AccId"]), ph2=phone2)
             
-            
+            db.execute("INSERT INTO userAccount(AccId, NID, DOB, IsVerified) VALUES (:acc, 'NULL', 'NUL', 'No')", acc= session["user_id"], nid=nid, dob=dob)
+    
             return render_template("Login.html", warning = 0)
 
     else:   
@@ -220,7 +242,7 @@ def Transaction():
         db.execute("INSERT INTO transactions(AccId, CardId, Amount, Date) Values(:acc, :card, :amnt, :date)", acc=int(session["user_id"]),  card=int(session["user_id"]) + 100, amnt=amount, date=date)
 
         cardInfo = db.execute("SELECT * FROM accountStatus cardDelivery WHERE AccId = :accId", accId = session["user_id"])
-        db.execute("UPDATE accountStatus SET Balance= :bal", bal = int(amount) + int(cardInfo[0]["Balance"]))
+        db.execute("UPDATE accountStatus SET Balance= :bal WHERE AccId = :acc", bal = int(amount) + int(cardInfo[0]["Balance"]), acc=int(session["user_id"]))
         return render_template("landing.html")
     else:
         return render_template("Transaction.html")
