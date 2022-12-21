@@ -332,6 +332,50 @@ nav .fa{
     color: inherit;
   }
 
+
+/*--TripDeletion--*/
+
+.deletion_row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.deletion_col-50 {
+  -ms-flex: 50%;
+  flex: 50%;
+}
+
+.deletion_col-50 .deletion_pad{
+  margin-top: 50px;
+}
+
+.delete_class{
+  margin-left:450px;
+}
+
+.deletion_container {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  color: #fff;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.deletion_col-50,
+  .deletion_col-75 {
+    padding: 0 16px;
+  }
+
 /*--Transaction--*/
 
 .title{
@@ -769,6 +813,110 @@ input[type=submit]:hover {
   margin-top: 7px
 }
 
+
+/*--Booking--*/
+
+.Booking_Wrapper{
+  padding:50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  padding: 80px 40px 40px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  color: #fff;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+}
+.form::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  transform: skewX(-26deg);
+  transform-origin: bottom left;
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+.form h2 {
+  text-align: center;
+  letter-spacing: 1px;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.submit-btn {
+  display: block;
+  margin-left: auto;
+  border: none;
+  outline: none;
+  background: #ff652f;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/*--Booking Confirmation--*/
+
+.BookingConfirmation_Wrapper{
+  padding:50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  margin-left: 5px;
+  margin-top: 120px;
+  padding: 80px 40px 40px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  color: #fff;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+}
+.form::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  transform: skewX(-26deg);
+  transform-origin: bottom left;
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+.submit-btn {
+  display: block;
+  margin-left: auto;
+  border: none;
+  outline: none;
+  background: #ff652f;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 /*--User Verification--*/
 
 .UserApply_Wrapper{
@@ -906,10 +1054,6 @@ th {
   color: white;
 }
 
-.table_button{
-  
-}
-
 .submit-button{
     margin-left: 1150px;
     padding: 20px;
@@ -951,6 +1095,33 @@ th {
 /*--BioMetricVerification--*/
 
 tr:hover {background-color: coral;}
+
+/*--AccountStatus--*/
+
+.Status_table_right{
+  padding: 20px;
+  margin-left: 300px;
+  margin-top: 50px;
+}
+
+.query{
+  max-width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  padding:20px;
+}
+
+.query p{
+font-family: 'Noto Sans JP', sans-serif;
+font-family: 'Roboto', sans-serif;
+font-family: 'Roboto Slab', serif;
+text-align: center;
+padding: 20px;
+background-color: azure;
+font-size: large;
+font-stretch: expanded;
+}
+
 
 /*--footer--*/
 
