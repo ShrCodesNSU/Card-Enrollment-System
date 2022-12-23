@@ -28,3 +28,12 @@ Incomplete:
 3. official bio verification
 6. booking 
 7. traindelete
+
+
+SELECT * FROM accounts
+LEFT JOIN userAccount
+ON accounts.AccId = userAccount.AccId
+
+
+
+

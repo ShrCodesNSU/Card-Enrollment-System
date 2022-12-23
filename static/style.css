@@ -696,9 +696,41 @@ input[type=submit]:hover {
 }
 
 
+/*--AccountStatus--*/
+
+.Status_table_right{
+  padding: 20px;
+  /* margin-left: 300px;
+  margin-top: 50px; */
+
+  margin: 50px auto;
+}
+
+.query{
+  max-width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  padding:20px;
+}
+
+.query p{
+font-family: 'Noto Sans JP', sans-serif;
+font-family: 'Roboto', sans-serif;
+font-family: 'Roboto Slab', serif;
+text-align: center;
+padding: 20px;
+background-color: azure;
+font-size: large;
+font-stretch: expanded;
+}
+/* 
+.Status_table_right tr:hover{
+  background-color: white;
+} */
+
 /*--BioMetricVerification--*/
 
-tr:hover {background-color: coral;}
+/* tr:hover {background-color: coral;} */
 
 table {
   border-collapse: collapse;

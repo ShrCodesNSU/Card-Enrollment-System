@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+<section>
+    <div class="query">
+        <p>For Any kind of query about your account status please contact our information center</p>
+    </div>
+</section>
+
+</section>
+<section class="Status_table_right">
+    <table>
+        <tr>
+            <th style="background-color: black;">StatusType</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <td>AccID</td>
+            <td>{{ AccID }}</td>
+        </tr>
+        <tr>
+            <td>CardID</td>
+            <td>{{ CardId }}</td>
+        </tr>
+        <tr>
+            <td>VerificationID</td>
+            <td>{{ VerifId }}</td>
+        </tr>
+        <tr>
+            <td>NumTrips</td>
+            <td>{{ NumTrips }}</td>
+        </tr>
+        <tr>
+            <td>Expenditure</td>
+            <td>{{ Expenditure }}</td>
+        </tr>
+        <tr>
+            <td>Balance</td>
+            <td>{{ Balance }}</td>
+        </tr>
+        <tr>
+            <td>Bioverification Status</td>
+            <td>{{ bioStat }}</td>
+        </tr>
+        <tr>
+            <td>Bioverification Date</td>
+            <td>{{ bioDate }}</td>
+        </tr>
+    </table>
+</section>
+
+
+
+
+{% endblock %}

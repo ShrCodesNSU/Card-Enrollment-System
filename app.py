@@ -48,6 +48,37 @@ def AboutUs():
 
 
 
+@app.route("/AccountStatus", methods = ["POST", "GET"])
+def AccountStatus():  
+    
+    accStat = db.execute("SELECT * FROM accountStatus WHERE AccId = :acc",acc=session["user_id"])
+    verifStat = db.execute("SELECT * FROM verifications WHERE AccId = :acc ", acc=session["user_id"])
+    if accStat:
+        cardId = accStat[0]["CardId"]
+        accId = accStat[0]["AccId"]
+        verifId = accStat[0]["VerifId"]
+        numTrips = accStat[0]["NumTrips"]
+        exp = accStat[0]["Expenditure"]
+        bal = accStat[0]["Balance"]
+    else:
+        cardId = "Not Issued"
+        accId = session["user_id"]
+        verifId = "Not Applied"
+        numTrips = "N/A"
+        exp = "N/A"
+        bal = "N/A"
+    
+    if verifStat:
+        bioStat = verifStat[0]["BioStat"]
+        bioDate = verifStat[0]["BioDate"]
+    else:
+        bioStat = "Not Requested"
+        bioDate = "Not Requested"
+        
+    
+    
+    return render_template("AccountStatus.html", AccID=accId, CardId=cardId, VerifId=verifId, NumTrips=numTrips, Expenditure=exp, Balance=bal, bioStat=bioStat, bioDate=bioDate) 
+
 @app.route("/Apply", methods = ["POST", "GET"])
 def Apply():    
     if request.method == "POST":
@@ -55,7 +86,7 @@ def Apply():
         dob = request.form.get("dob")
         
         db.execute("UPDATE userAccount SET NID=:nid, DOB=:dob, IsVerified='Pending' WHERE AccId = :acc", acc= session["user_id"], nid=nid, dob=dob)
-       
+        session["userVerif"] = "Pending"
         return render_template("landing.html")
 
     else:
@@ -102,7 +133,9 @@ def VerifyUser():
         if stat == "YES":
             bioDate = "2023-" + str(random.randint(1,12)) + "-" + str(random.randint(1,30))
             db.execute("INSERT INTO verifications(AccId,  BioStat, BioDate) VALUES (:acc, 'Pending', :date)", acc=acc, date=bioDate)
-        
+            session["userVerif"] = "YES"
+            ver= db.execute("SELECT * FROM verifications WHERE AccId = :acc", acc=acc)
+            db.execute("INSERT INTO accountstatus (accId, cardId, verifId, numTrips, expenditure, balance) VALUES (:acc, :card, :ver, 0, 0, 0)", acc=acc, card=int(acc) + 100, ver=ver[0]["VerifId"])
         
         
         return render_template("offUserVerf.html", allReqs=allReqs)
