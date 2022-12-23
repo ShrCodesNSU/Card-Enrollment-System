@@ -13,13 +13,13 @@ html => linked tables
 9. userverification => account status, account
 10. official user verification => accounts, userAccount, accountStatus
 11. Profile Page => accountStatus, verification
+12. traindelete => trip
+13. booking => accountStatus, trip, booking, account
 
 Incomplete:
 
-3. official bio verification
-6. booking 
-7. traindelete
-
+14. official bio verification
+15. delivery status 
 
 SELECT * FROM accounts
 LEFT JOIN userAccount

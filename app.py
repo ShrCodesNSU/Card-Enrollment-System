@@ -48,6 +48,44 @@ def AboutUs():
 
 
 
+
+@app.route("/ConfirmBooking", methods = ["POST", "GET"])
+def ConfirmBooking(trId=0):    
+    if request.method == "POST":
+        
+        acc=session["user_id"]
+        trId = request.form.get("tripId")
+        stat = request.form.get("check")
+        
+        app.logger.info("yessssssssssssssss: " + stat)
+        app.logger.info("yessssssssssssssss: " + trId)
+        trInfo = db.execute("SELECT * FROM trip WHERE TripId=:tr", tr=trId)
+        if stat == "Yes":
+            db.execute("INSERT INTO booking(AccId, TripId) VALUES (:a, :t)", a=acc, t=trId)
+            accStat = db.execute("SELECT * FROM accountStatus WHERE AccId=:a", a=acc)
+            
+            db.execute("UPDATE trip SET AvailSeat=:avSt WHERE TripId=:trId", avSt = int(trInfo[0]["Cost"]) -1, trId=trId)
+            db.execute("UPDATE accountStatus SET NumTrips=:n, Expenditure=:exp, Balance=:b WHERE AccId=:acc", n=int(accStat[0]["NumTrips"])+1, exp=int(accStat[0]["Expenditure"])+int(trInfo[0]["Cost"]), b=int(accStat[0]["Balance"])-int(trInfo[0]["Cost"]), acc=acc)
+        
+        
+    trInfo =db.execute("SELECT * FROM trip ")
+    return render_template("booking.html", allReqs=trInfo)
+
+
+@app.route("/Booking", methods = ["POST", "GET"])
+def Booking():
+    if request.method == "POST":
+        trId = request.form.get("tripId")
+        trInfo = db.execute("SELECT * FROM trip WHERE TripId=:tr", tr=trId)
+        return render_template("BookingConfirmation.html", tr=trInfo[0])
+        
+    allReqs = db.execute("SELECT * FROM trip")    
+    return render_template("booking.html", allReqs=allReqs)
+
+    
+    
+
+
 @app.route("/deleteTrip", methods = ["POST", "GET"])
 def deleteTrip():
     if request.method == "POST":
