@@ -728,6 +728,56 @@ font-stretch: expanded;
   background-color: white;
 } */
 
+
+
+/*--TripDeletion--*/
+
+.deletion_row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.deletion_col-50 {
+  -ms-flex: 50%;
+  flex: 50%;
+}
+
+.deletion_col-50 .deletion_pad{
+  margin-top: 50px;
+}
+
+.delete_class{
+  margin-left:450px;
+}
+
+.deletion_container {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  color: #fff;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.deletion_col-50,
+  .deletion_col-75 {
+    padding: 0 16px;
+  }
+
+
+
+
+
+
 /*--BioMetricVerification--*/
 
 /* tr:hover {background-color: coral;} */

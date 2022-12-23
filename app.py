@@ -48,6 +48,23 @@ def AboutUs():
 
 
 
+@app.route("/deleteTrip", methods = ["POST", "GET"])
+def deleteTrip():
+    if request.method == "POST":
+        trId = request.form.get("tripId")
+        stat = request.form.get("check")
+        app.logger.info(trId)
+        if stat  == "Yes":
+            db.execute("DELETE FROM trip WHERE TripId=:tId", tId=int(trId))
+        
+        
+    allReqs = db.execute("SELECT * FROM trip")    
+    return render_template("delTrip.html", allReqs=allReqs)
+
+
+
+
+
 @app.route("/AccountStatus", methods = ["POST", "GET"])
 def AccountStatus():  
     
@@ -119,6 +136,7 @@ def Complaints():
 def FAQ():
     faqList = db.execute("SELECT * FROM faqList")
     return render_template("FAQ.html", faqList=faqList)
+
 
 
 
