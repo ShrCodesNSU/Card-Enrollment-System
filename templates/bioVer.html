@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+
+
+
+<section>
+  <h2 style="text-align: center">Biometric Verification</h2>
+
+
+  {% for req in allReqs %}
+  <table>
+    <tr>
+      <th>Information Type</th>
+      <th>Information Value</th>
+    </tr>
+    <tr>
+      <td>UserID</td>
+      <td>{{req["AccId"]}}</td>
+    </tr>
+    <tr>
+      <td>Username</td>
+      <td>{{req["Name"]}}</td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td>{{req["Email"]}}</td>
+    </tr>
+    <tr>
+      <td>NID</td>
+      <td>{{req["NID"]}}</td>
+    </tr>
+    <tr>
+      <td>Date of Birth</td>
+      <td>{{req["DOB"]}}</td>
+    </tr>
+    <tr>
+      <td>Gender</td>
+      <td>{{req["Gender"]}}</td>
+    </tr>  
+    <tr>
+      <td>BioVerification Status</td>
+      <td>{{req["BioStat"]}}</td>
+    </tr>   
+    <tr>
+      <td>BioVerification Date</td>
+      <td>{{req["BioDate"]}}</td>
+    </tr>  
+    <tr>
+      <td>     
+        
+      </td>
+      <td>       
+        <form action="/BioVer" method="POST" >
+          <div class="radio-btn">
+            <input type="radio" class="btn" name="check" value="Yes"><span>Completed</span>
+            <button class="verif-btn" type="submit" name="verifId" value="{{  req['VerifId']  }}">Verify</button>
+        </div>
+          
+           
+        </form>
+      </td>
+    </tr>
+    
+  </table><br>
+
+{% endfor %}
+
+
+
+</section>
+
+
+{% endblock %}

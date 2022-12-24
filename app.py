@@ -49,6 +49,54 @@ def AboutUs():
 
 
 
+@app.route("/BioVer", methods = ["POST", "GET"])
+def BioVer(): 
+    if request.method == "POST":
+        verId = request.form.get("verifId")
+        stat = request.form.get("check")
+        
+        if stat == "Yes":
+            app.logger.info(stat + " Lesgoooo")
+            app.logger.info(verId + " Lesgoooo")
+            db.execute("UPDATE verifications SET BioStat='Approved' WHERE VerifId=:verId", verId=verId)
+            ver= db.execute("SELECT * FROM verifications WHERE VerifId = :verId", verId=verId)
+            db.execute("INSERT INTO accountstatus (accId, cardId, verifId, numTrips, expenditure, balance) VALUES (:acc, :card, :ver, 0, 0, 0)", acc=int(ver[0]["AccId"]), card=int(ver[0]["AccId"]) + 100, ver=int(ver[0]["VerifId"]))
+            
+            delDate = "2023-" + str(random.randint(1,12)) + "-" + str(random.randint(1,30))
+            db.execute("INSERT INTO CardDelivery(AccId, DelDate, DelStat, VerifId) VALUES(:a, :date, 'Pending', :verId)", verId=int(verId), a=int(ver[0]["AccId"]), date=delDate)
+    
+    bios = db.execute("SELECT v.BioStat, v.BioDate, a.AccId, a.Name, a.Email, a.Gender, ua.NID, ua.DOB, v.VerifId FROM accounts a, userAccount ua, verifications v WHERE a.AccId = v.AccId AND ua.AccId = v.AccId AND v.BioStat <> 'Approved'")
+    return render_template("bioVer.html", allReqs=bios)
+
+
+
+
+
+@app.route("/VerifyUser", methods=["GET", "POST"])
+def VerifyUser():
+    if request.method == "POST":
+        acc = request.form.get("userId")
+        stat = request.form.get("check")
+        db.execute("UPDATE userAccount SET IsVerified = :stat WHERE AccId = :accId", accId=acc, stat=stat)
+        allReqs = db.execute('SELECT accounts.AccId,Name,Email,Gender,NID,DOB FROM accounts, userAccount WHERE accounts.AccId = userAccount.AccId AND userAccount.IsVerified = "Pending"')
+        
+        if stat == "YES":
+            bioDate = "2023-" + str(random.randint(1,12)) + "-" + str(random.randint(1,30))
+            db.execute("INSERT INTO verifications(AccId,  BioStat, BioDate) VALUES (:acc, 'Pending', :date)", acc=acc, date=bioDate)
+            session["userVerif"] = "YES"
+            
+        
+        return render_template("offUserVerf.html", allReqs=allReqs)
+
+    else:
+        allReqs = db.execute('SELECT accounts.AccId,Name,Email,Gender,NID,DOB FROM accounts, userAccount WHERE accounts.AccId = userAccount.AccId AND userAccount.IsVerified = "Pending"')
+        return render_template("offUserVerf.html", allReqs=allReqs)
+
+
+
+
+
+
 @app.route("/ConfirmBooking", methods = ["POST", "GET"])
 def ConfirmBooking(trId=0):    
     if request.method == "POST":
@@ -177,31 +225,6 @@ def FAQ():
 
 
 
-
-@app.route("/VerifyUser", methods=["GET", "POST"])
-def VerifyUser():
-    if request.method == "POST":
-        acc = request.form.get("userId")
-        stat = request.form.get("check")
-        db.execute("UPDATE userAccount SET IsVerified = :stat WHERE AccId = :accId", accId=acc, stat=stat)
-        allReqs = db.execute('SELECT accounts.AccId,Name,Email,Gender,NID,DOB FROM accounts, userAccount WHERE accounts.AccId = userAccount.AccId AND userAccount.IsVerified = "Pending"')
-        
-        if stat == "YES":
-            bioDate = "2023-" + str(random.randint(1,12)) + "-" + str(random.randint(1,30))
-            db.execute("INSERT INTO verifications(AccId,  BioStat, BioDate) VALUES (:acc, 'Pending', :date)", acc=acc, date=bioDate)
-            session["userVerif"] = "YES"
-            ver= db.execute("SELECT * FROM verifications WHERE AccId = :acc", acc=acc)
-            db.execute("INSERT INTO accountstatus (accId, cardId, verifId, numTrips, expenditure, balance) VALUES (:acc, :card, :ver, 0, 0, 0)", acc=acc, card=int(acc) + 100, ver=ver[0]["VerifId"])
-        
-        
-        return render_template("offUserVerf.html", allReqs=allReqs)
-
-    else:
-        allReqs = db.execute('SELECT accounts.AccId,Name,Email,Gender,NID,DOB FROM accounts, userAccount WHERE accounts.AccId = userAccount.AccId AND userAccount.IsVerified = "Pending"')
-        return render_template("offUserVerf.html", allReqs=allReqs)
-
-
-
 @app.route("/Login", methods=["GET", "POST"])
 def login(warning = 0):
     if request.method == "POST":
@@ -233,11 +256,11 @@ def login(warning = 0):
             session["userVerif"] = userVerif[0]["IsVerified"]
         # Redirect user to home page
         
-        cardDel = db.execute("SELECT * FROM cardDelivery WHERE AccId = :accId", accId = session["user_id"])
+        cardAvail = db.execute("SELECT * FROM verifications WHERE AccId = :accId", accId = session["user_id"])
         
         session["hasCard"] = "False"
-        if session["userVerif"] == "Yes":
-            if cardDel[0]["DelStat"] == "Delivered":
+        if cardAvail:
+            if cardAvail[0]["BioStat"] == "Approved":
                 session["hasCard"] = "True"
             
         return redirect("/")
@@ -288,8 +311,8 @@ def SignUp(warning = 0):
             if request.form.get("phone2"):
                 phone2 = request.form.get("phone2")
                 db.execute("INSERT INTO phone(AccId, PhoneNumber) VALUES (:userID, :ph2)", userID=int(userIdNew[0]["AccId"]), ph2=phone2)
-            
-            db.execute("INSERT INTO userAccount(AccId, NID, DOB, IsVerified) VALUES (:acc, 'NULL', 'NUL', 'No')", acc= session["user_id"], nid=nid, dob=dob)
+            session["user_id"] = int(userIdNew[0]["AccId"])
+            db.execute("INSERT INTO userAccount(AccId, NID, DOB, IsVerified) VALUES (:acc, 'NULL', 'NUL', 'No')", acc= session["user_id"])
     
             return render_template("Login.html", warning = 0)
 

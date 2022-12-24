@@ -15,10 +15,10 @@ html => linked tables
 11. Profile Page => accountStatus, verification
 12. traindelete => trip
 13. booking => accountStatus, trip, booking, account
+14. official bio verification => verifications, accountStatus, account
 
 Incomplete:
 
-14. official bio verification
 15. delivery status 
 
 SELECT * FROM accounts

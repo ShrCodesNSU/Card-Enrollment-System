@@ -37,8 +37,8 @@
 
 
                 {% if session.accType == "User" %}
-                    {% if session.userVerif == "Yes" %}
-                        <li><a href="Metrocard">Metrocard</a></li>
+                    {% if session.userVerif == "Yes" or session.userVerif == "YES" %}
+                    <li><a href="Metrocard">Metrocard</a></li>
                         <li><a href="AccountStatus">Profile</a></li>  
                         <li><a href="Booking">Booking</a></li>    
                     {% endif %}
@@ -51,6 +51,7 @@
 
 
                 {% if session.accType == "Oficial" %}
+                    <li><a href="BioVer">BioVerification</a></li>
                     <li><a href="VerifyUser">VerifyUser</a></li>
                     <li><a href="deleteTrip">TripDelete</a></li>
                     <li><a href="TripsAndBooking">Create Trips</a></li>
