@@ -48,6 +48,13 @@ def AboutUs():
 
 
 
+@app.route("/trainStat")
+def trainStat():
+    req = db.execute("SELECT trip.TripId, Trip.TrainName, Trip.Date, Trip.TripTime, COUNT(booking.TripId) AS numTrip, Trip.Cost*COUNT(booking.TripId) as rev FROM trip, booking WHERE trip.TripId = booking.TripId GROUP BY trip.TripId")
+    return render_template("trainStat.html", allReqs=req)
+
+
+
 @app.route("/AdminComplain", methods = ["POST", "GET"])
 def AdminComplain(): 
     

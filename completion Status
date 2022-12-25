@@ -23,6 +23,11 @@ html => linked tables
 
 Incomplete:
 
+SELECT trip.TripId, Trip.TrainName, Trip.Date, Trip.TripTime, COUNT(booking.TripId) 
+AS numTrip 
+FROM trip, booking 
+WHERE trip.TripId = booking.TripId
+GROUP BY trip.TripId 
 
 
 
