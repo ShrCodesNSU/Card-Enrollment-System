@@ -985,6 +985,40 @@ th {
     margin-top: 7px
   }
 
+  
+/*--AdminComplaints--*/
+
+.admin_complaints{
+  max-width: 1000px;
+  text-align: center;
+  margin: 0 auto;
+  background-color: azure;
+}
+
+table.table_1 th{
+background-color: #000;
+}
+
+table.table_1 td{
+
+}
+
+.box1 {
+background-color: lightgray;
+max-width: 1000px;
+padding: 20px;
+margin: 0 auto;
+border: 5px solid gray;
+}
+
+.box2{
+background-color: lightgray;
+max-width: 1000px;
+padding: 300px;
+margin: 0 auto;
+border: 5px solid gray;
+}
+
 /*--footer--*/
 .footer{
     width: 100%;

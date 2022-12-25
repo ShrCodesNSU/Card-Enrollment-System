@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+
+
+
+<section>
+  <h2 style="text-align: center">Delivery Update</h2>
+
+
+  {% for req in allReqs %}
+  <table>
+    <tr>
+      <th>Information Type</th>
+      <th>Information Value</th>
+    </tr>
+    <tr>
+      <td>UserID</td>
+      <td>{{req["AccId"]}}</td>
+    </tr>
+    <tr>
+      <td>Username</td>
+      <td>{{req["Name"]}}</td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td>{{req["Email"]}}</td>
+    </tr>
+    <tr>
+      <td>NID</td>
+      <td>{{req["NID"]}}</td>
+    </tr>
+    <tr>
+      <td>Date of Birth</td>
+      <td>{{req["DOB"]}}</td>
+    </tr>
+    <tr>
+      <td>Gender</td>
+      <td>{{req["Gender"]}}</td>
+    </tr>  
+    
+    <tr>
+        <td>Delivery Id</td>
+        <td>{{req["DeliveryId"]}}</td>
+    </tr> 
+    <tr>
+        <td>Delivery Date</td>
+        <td>{{req["DelDate"]}}</td>
+    </tr> 
+    <tr>
+        <td>Delivery Status</td>
+        <td>{{req["DelStat"]}}</td>
+    </tr> 
+    
+    
+
+
+    <tr>
+      <td>     
+        
+      </td>
+      <td>       
+        <form action="/UpdateDelivery" method="POST" >
+          <div class="radio-btn">
+            {% if req["DelStat"] == "Pending" %}
+                <input type="radio" class="btn" name="check"value="On-The-Way"><span>On-The-Way</span>
+            {% endif %}
+            <input type="radio" class="btn" name="check" checked="checked"  value="Delivered"><span>Delivered</span>
+            <button class="verif-btn" type="submit" name="delId" value="{{  req['DeliveryId']  }}">Verify</button>
+        </div>
+          
+           
+        </form>
+      </td>
+    </tr>
+    
+  </table><br>
+
+{% endfor %}
+
+
+
+</section>
+
+
+{% endblock %}

@@ -48,6 +48,25 @@ def AboutUs():
 
 
 
+@app.route("/AdminComplain", methods = ["POST", "GET"])
+def AdminComplain(): 
+    return render_template("adminComplaint.html")
+
+
+
+@app.route("/UpdateDelivery", methods = ["POST", "GET"])
+def UpdateDelivery(): 
+    
+    if request.method == "POST":
+        delId = request.form.get("delId")
+        stat = request.form.get("check")
+        
+        db.execute("UPDATE cardDelivery SET DelStat = :stat WHERE DeliveryId = :delId", stat = stat, delId=delId)
+    info = db.execute("SELECT a.AccId, a.Name, a.Email, a.Gender, ua.NID, ua.DOB, c.DeliveryId, c.DelDate, c.DelStat FROM accounts a INNER JOIN userAccount ua ON a.AccId = ua.AccId INNER JOIN cardDelivery c ON ua.AccId = c.AccId WHERE c.DelStat <> 'Delivered';")
+    return render_template("updateDelivery.html", allReqs=info)
+
+
+
 
 @app.route("/BioVer", methods = ["POST", "GET"])
 def BioVer(): 
@@ -112,7 +131,7 @@ def ConfirmBooking(trId=0):
             db.execute("INSERT INTO booking(AccId, TripId) VALUES (:a, :t)", a=acc, t=trId)
             accStat = db.execute("SELECT * FROM accountStatus WHERE AccId=:a", a=acc)
             
-            db.execute("UPDATE trip SET AvailSeat=:avSt WHERE TripId=:trId", avSt = int(trInfo[0]["Cost"]) -1, trId=trId)
+            db.execute("UPDATE trip SET AvailSeat=:avSt WHERE TripId=:trId", avSt = int(trInfo[0]["AvailSeat"]) -1, trId=trId)
             db.execute("UPDATE accountStatus SET NumTrips=:n, Expenditure=:exp, Balance=:b WHERE AccId=:acc", n=int(accStat[0]["NumTrips"])+1, exp=int(accStat[0]["Expenditure"])+int(trInfo[0]["Cost"]), b=int(accStat[0]["Balance"])-int(trInfo[0]["Cost"]), acc=acc)
         
         
@@ -155,10 +174,13 @@ def deleteTrip():
 def AccountStatus():  
     
     accStat = db.execute("SELECT * FROM accountStatus WHERE AccId = :acc",acc=session["user_id"])
+    accInfo = db.execute("SELECT * FROM accounts WHERE AccId = :acc",acc=session["user_id"])
     verifStat = db.execute("SELECT * FROM verifications WHERE AccId = :acc ", acc=session["user_id"])
+    
     if accStat:
         cardId = accStat[0]["CardId"]
         accId = accStat[0]["AccId"]
+        name = accInfo[0]["Name"]
         verifId = accStat[0]["VerifId"]
         numTrips = accStat[0]["NumTrips"]
         exp = accStat[0]["Expenditure"]
@@ -180,7 +202,7 @@ def AccountStatus():
         
     
     
-    return render_template("AccountStatus.html", AccID=accId, CardId=cardId, VerifId=verifId, NumTrips=numTrips, Expenditure=exp, Balance=bal, bioStat=bioStat, bioDate=bioDate) 
+    return render_template("AccountStatus.html", AccID=accId, CardId=cardId, VerifId=verifId, NumTrips=numTrips, Expenditure=exp, Balance=bal, bioStat=bioStat, bioDate=bioDate, Name=name) 
 
 @app.route("/Apply", methods = ["POST", "GET"])
 def Apply():    

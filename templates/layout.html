@@ -33,6 +33,9 @@
                     <li><a href="Transaction">Transaction</a></li>                
                 {% endif %}
 
+                {% if session.accType == "Admin" %}
+                    <li><a href="AdminComplain">Complaints</a></li>   
+                {% endif %}
 
 
 
@@ -51,8 +54,9 @@
 
 
                 {% if session.accType == "Oficial" %}
-                    <li><a href="BioVer">BioVerification</a></li>
                     <li><a href="VerifyUser">VerifyUser</a></li>
+                    <li><a href="BioVer">BioVerification</a></li>
+                    <li><a href="UpdateDelivery">UpdateDelivery</a></li>
                     <li><a href="deleteTrip">TripDelete</a></li>
                     <li><a href="TripsAndBooking">Create Trips</a></li>
                 {% endif %}

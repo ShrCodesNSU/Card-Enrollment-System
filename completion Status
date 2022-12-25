@@ -16,14 +16,16 @@ html => linked tables
 12. traindelete => trip
 13. booking => accountStatus, trip, booking, account
 14. official bio verification => verifications, accountStatus, account
+15. delivery status => accounts, userAccount, CardDelivery
+
+
 
 Incomplete:
 
-15. delivery status 
+16. admin complaint
 
-SELECT * FROM accounts
-LEFT JOIN userAccount
-ON accounts.AccId = userAccount.AccId
+d'
+
 
 
 
