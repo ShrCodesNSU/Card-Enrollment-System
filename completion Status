@@ -17,14 +17,13 @@ html => linked tables
 13. booking => accountStatus, trip, booking, account
 14. official bio verification => verifications, accountStatus, account
 15. delivery status => accounts, userAccount, CardDelivery
+16. admin complaint => accountStatus, Complaint
 
 
 
 Incomplete:
 
-16. admin complaint
 
-d'
 
 
 

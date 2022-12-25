@@ -50,7 +50,12 @@ def AboutUs():
 
 @app.route("/AdminComplain", methods = ["POST", "GET"])
 def AdminComplain(): 
-    return render_template("adminComplaint.html")
+    
+    if request.method == "POST":
+        stat = request.form.get("Resolved")
+        db.execute("DELETE FROM complaint WHERE ComplaintId = :cId", cId=stat)    
+    allComp = db.execute("SELECT * FROM accounts, complaint WHERE accounts.AccId = complaint.AccId")
+    return render_template("adminComplaint.html", allReqs=allComp)
 
 
 
