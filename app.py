@@ -200,6 +200,7 @@ def AccountStatus():
     else:
         cardId = "Not Issued"
         accId = session["user_id"]
+        name = accInfo[0]["Name"]
         verifId = "Not Applied"
         numTrips = "N/A"
         exp = "N/A"

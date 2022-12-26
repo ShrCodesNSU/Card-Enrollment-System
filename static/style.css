@@ -978,7 +978,7 @@ th {
   }
   .track .step.active .text{
     font-weight: 400;
-    color: #000
+    color: #000000
   }
   .track .text{
     display: block;
@@ -1010,6 +1010,67 @@ table.table_1 td{
 table.table_1 th{
   background-color: #000;
 }
+
+
+
+
+
+/* LANDING PAGE */
+.body{
+  background-color: whitesmoke;
+}
+/*full body ends*/
+.gg p{
+  padding-left: 50px;
+}
+
+.lesgo div{
+  margin: 15px;
+  padding: 20px;
+  border-radius: 20px;
+  background: #ccc;
+}
+.lesgo img{
+  background: whitesmoke;
+  border-radius: 30px;
+}
+
+.lesgo div:hover{
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.116);
+}
+
+/*carousel starts*/
+.carousel_img{
+  width: 540px;
+  height: 480px;
+
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.carousel_vertical_center {
+  margin: 0;
+  position: relative;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.dhaka_metro_rail_gradient{
+  background-color: #f3ec78;
+  
+  background-image: linear-gradient(45deg, red , yellow);
+  background-clip: text;
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+}
+/*carousel ends*/
+
+
 
 
 
