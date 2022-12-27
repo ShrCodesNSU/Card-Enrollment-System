@@ -6,7 +6,7 @@
 
 
 <section>
-  <h2 style="text-align: center">Biometric Verification</h2>
+  <h2 class="title" style="text-align: center; margin:50px">Biometric Verification</h2>
 
 
   {% for req in allReqs %}
@@ -54,7 +54,7 @@
       <td>       
         <form action="/BioVer" method="POST" >
           <div class="radio-btn">
-            <input type="radio" class="btn" name="check" value="Yes"><span>Completed</span>
+            <input type="radio" checked="checked" class="btn" name="check" value="Yes"><span>Completed</span>
             <button class="verif-btn" type="submit" name="verifId" value="{{  req['VerifId']  }}">Verify</button>
         </div>
           
