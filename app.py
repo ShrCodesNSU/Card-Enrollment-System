@@ -270,12 +270,12 @@ def login(warning = 0):
             return render_template("Login.html",warning = 1)
         
         # Store the user input
-        username = request.form.get("loginUser")
+        email = request.form.get("loginUser")
         password = request.form.get("loginPassword")
         
 
         # Query the database for user credentials
-        rows = db.execute("SELECT * FROM accounts WHERE Name = :username", username=username)
+        rows = db.execute("SELECT * FROM accounts WHERE Email = :email", email=email)
 
         # Ensure the user exists and their password is correct
         if len(rows) != 1 or not rows[0]["Password"] == password:

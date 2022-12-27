@@ -42,11 +42,13 @@
 
 
 
-                {% if session.accType == "User" %}
+                {% if session.accType == "User" %}                
                     {% if session.userVerif == "Yes" or session.userVerif == "YES" %}
-                    <li><a href="Metrocard">Metrocard</a></li>
-                        <li><a href="AccountStatus">Profile</a></li>  
-                        <li><a href="Booking">Booking</a></li>    
+                        <li><a href="AccountStatus">Profile</a></li>    
+                    {% endif %}
+                    {% if session.hasCard == "True" %}
+                        <li><a href="Metrocard">DeliveryStat</a></li>
+                        <li><a href="Booking">Booking</a></li>  
                     {% endif %}
                     {% if session.userVerif == "No" %}
                         <li><a href="Apply">Apply</a></li>
