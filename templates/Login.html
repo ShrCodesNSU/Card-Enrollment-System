@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+
+{% if warning == 1 %}
+
+    <h1 class="title" style="color: red;">Wrong Info</h1>
+
+{% endif %}
+
+<section>
+    <div class="login-wrapper">
+        <form action="/Login" method="post" class="form">
+          <h2 class="title">Login</h2>
+          <div class="input-group">
+            <input type="text" name="loginUser" id="loginUser" required />
+            <label for="loginUser">Email</label>
+          </div>
+          <div class="input-group">
+            <input
+              type="password"
+              name="loginPassword"
+              id="loginPassword"
+              required
+            />
+            <label for="loginPassword">Password</label>
+            <a href="SignUp">Don't have an account?Sign up here</a>
+          </div>
+          <input type="submit" value="Login" class="submit-btn" />
+        </form>
+      </div>
+</section>
+
+
+
+{% endblock %}

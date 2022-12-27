@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+
+
+
+<section>
+    <h2  class="title" style="text-align: center; margin:50px">Delete a Trip</h2>
+
+
+    {% for req in allReqs %}
+    <table>
+        <tr>
+            <th>TrainInfo: </th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>TripId</td>
+            <td>{{req["TripId"]}}</td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>{{req["TrainName"]}}</td>
+        </tr>
+        <tr>
+            <td>Date</td>
+            <td>{{req["Date"]}}</td>
+        </tr>
+        <tr>
+            <td>Time</td>
+            <td>{{req["TripTime"]}}</td>
+        </tr>
+        <tr>
+            <td>Destination</td>
+            <td>{{req["Dest"]}}</td>
+        </tr>
+        <tr>
+            <td>Available Seats</td>
+            <td>{{req["AvailSeat"]}}</td>
+        </tr>
+        <tr>
+            <td>Total Seats</td>
+            <td>{{req["TotalSeat"]}}</td>
+        </tr>
+        <tr>
+            <td>Ticket Price</td>
+            <td>{{req["Cost"]}}</td>
+        </tr>
+        
+            <td>
+
+            </td>
+            <td>
+                <form action="/deleteTrip" method="POST">
+                    <div class="radio-btn">
+                        <input type="radio" class="btn" name="check" checked="checked" value="No"><span>Keep</span>
+                        <input type="radio" class="btn" name="check" value="Yes"><span>Delete</span>
+                        <button class="verif-btn" type="submit" name="tripId"
+                            value="{{  req['TripId']  }}">Confirm</button>
+                    </div>
+                </form>
+            </td>
+        </tr>
+
+    </table><br>
+
+    {% endfor %}
+
+
+
+</section>
+
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+
+{% if warning == 1 %}
+
+    <h1 class="title" style="color: rgb(0, 248, 0);">Trip Created</h1>
+
+{% endif %}
+<section>
+  <div  class="Trip_box">
+    <form action="/TripsAndBooking" method="post" class="form">
+      <h2>Create a Train Line</h2>
+
+
+      <div class="input-group">
+        <input type="text" name="trainName" id="trainName" required />
+        <label for="trainName">Enter Name of Train</label>
+      </div>
+
+      <div class="input-group">
+        <input type="text" name="date" id="date" required />
+        <label for="date">Date (yyyy-mm-dd)</label>
+      </div>
+
+
+      <div class="input-group">
+        <input type="text" name="stTime" id="stTime"  required />
+        <label for="stTime">Start Time(hh:mm:ss)</label>
+      </div>
+
+        <div class="input-group">
+          <input type="text" name="dest" id="dest" required />
+          <label for="dest">Destination</label>
+        </div>
+        <div class="input-group">
+          <input type="text" name="totSeat" id="totSeat" required />
+          <label for="totSeat">Total Seat</label>
+        </div>
+        <div class="input-group">
+          <input type="text" name="cost" id="cost" required />
+          <label for="cost">Cost</label>
+        </div>
+
+        
+
+        <input type="submit" value="Submit" class="submit-btn" />
+
+    </form>
+  </div>
+</section>
+
+
+
+
+
+{% endblock %}

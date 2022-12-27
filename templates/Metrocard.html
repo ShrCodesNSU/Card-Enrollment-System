@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+
+
+<section>
+    <div class="Card_Container">
+        <article class="card">
+            <header class="card-header">Card Delivery Tracking</header>
+            <div class="card-body" style="padding-top: 50px;">
+                <h6>Delivery ID: {{delId}}</h6>
+                <article class="card">
+                    <div class="card-body row">
+                        <div class="col"> <strong>Estimated Delivery time:</strong> <br>{{delTime}} </div>
+                        <div class="col"> <strong>Shipping BY:</strong> <br> Dhaka MetroRail, | <i
+                                class="fa fa-phone"></i> +1598675986 </div>
+                        <div class="col"> <strong>Status:</strong> <br> {{delStat}} </div>
+                    </div>
+                </article>
+                <div class="track" style="margin-top: 80px;">
+
+                    {% if delStat == "Delivered" %}
+                        <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span
+                                class="text">Metrocard Undergoing Porduction</span> 
+                        </div>
+                        <div class="step active"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span
+                                class="text"> On the way </span> 
+                        </div>
+                        <div class="step active"> <span class="icon"> <i class="fa fa-box"></i> </span> <span
+                                class="text">Ready for pickup</span> 
+                        </div>
+                    {% endif %}
+
+
+                    {% if delStat == "On-The-Way" %}
+                        <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span
+                                class="text">Metrocard Porduction confirmed</span> </div>
+                        <div class="step active"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span
+                                class="text"> On the way </span> </div>
+                        <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text">Ready
+                                for pickup</span> 
+                        </div>
+                    {% endif %}
+
+
+
+                    {% if delStat == "Pending" %}
+                        <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span
+                                class="text">Metrocard Porduction confirmed</span> 
+                        </div>
+                        <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> On
+                                the way </span> 
+                        </div>
+                        <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text">Ready
+                                for pickup</span> 
+                        </div>
+                    {% endif %}
+
+
+
+                </div>
+                <hr>
+            </div>
+        </article>
+    </div>
+</section>
+
+
+</section>
+
+{% endblock %}

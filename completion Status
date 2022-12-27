@@ -1,0 +1,21 @@
+Completed pages: 
+
+html => linked tables
+
+1. login => accounts, userAccount
+2. signup => accounts, phone
+3. FAQ => FAQtable
+4. Complaints => accounts, ComplaintsTable
+5. tripsNbooking => accounts, trips
+6. Metrocard => accounts, cardDelivery
+7. Logout => accounts
+8. transaction => transaction,  cardStatus, accounts
+9. userverification => account status, account
+10. official user verification => accounts, userAccount, accountStatus
+11. Profile Page => accountStatus, verification
+12. traindelete => trip
+13. booking => accountStatus, trip, booking, account
+14. official bio verification => verifications, accountStatus, account
+15. delivery status => accounts, userAccount, CardDelivery
+16. admin complaint => accountStatus, Complaint
+17. admin tripStats => trip, booking

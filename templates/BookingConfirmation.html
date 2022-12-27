@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+
+
+<section>
+
+
+    {% if warning == 1 %}
+    <p style="text-align: center; padding:60px; margin:50px; background: rgba(252, 17, 0, 0.43);">Already Booked</p>
+    {% endif %}
+
+<div class="BookingConfirmation_Wrapper" style="text-align: center;">
+    <form action="/ConfirmBooking" method="post" class="form">
+        <div class="radio-btn">
+            <h3 class="title">Confirm Your Trip</h3>
+            Train Name: {{tr["TrainName"]}}<br>
+            Destination: {{tr["Dest"]}}<br>
+            Time: {{tr["TripTime"]}}<br>
+            Are you sure you want to book this trip?<br>
+            <input type="radio" class="btn" name="check" value="Yes"><span>Yes</span>
+            <input type="radio" class="btn" name="check"  checked="checked" value="No" style="margin-left: 50px;"><span>No</span><p></p>
+            <button class="verif-btn" type="submit" name="tripId"
+                            value="{{  tr['TripId']  }}">Confirm Trip</button>
+          </div>
+      </form>
+    </div>  
+
+
+</section>
+
+
+{% endblock %}

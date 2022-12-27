@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+<h1 class="title" style="text-align: center; margin:50px">Unresolved Complaints</h1>
+
+<div class="admin_complaints">
+    <section>
+        <p></p>
+        <table class="table_1">
+            <tr>
+                <th>UserDetails</th>
+                <th>Complaint Subject</th>
+                <th>Complaint Descritpion</th>
+                <th ></th>
+    
+            </tr>
+    
+
+            {% for req in allReqs %}
+                <tr>
+                    <td>
+                        AccId: {{req["AccId"]}}<br><br>
+                        {{req["Name"]}}<br><br>
+                        {{req["Email"]}}<br><br>
+                        
+                        CompId: {{req["ComplaintId"]}}<br>
+                    </td>
+                    <td>                        
+                        {{req["ComplaintSubj"]}}<br>
+                    </td>
+                    <td>
+                        {{req["ComplaintText"]}}<br>
+                    </td>
+                    <td>
+                        <form action="/AdminComplain" method="POST" >
+                            <div class="radio-btn">
+                              <button class="verif-btn" type="submit" name="Resolved" value="{{  req['ComplaintId']  }}">Resolved</button>
+                          </div>
+                        </form>
+                        
+                    </td>
+                </tr>   
+            {% endfor %}
+          </table>
+    </section>
+    <br>
+    
+
+{% endblock %}

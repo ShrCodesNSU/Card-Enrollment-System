@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+
+
+
+<section>
+  <h2 class="title" style="text-align: center; margin:50px">User Verification</h2>
+
+
+  {% for req in allReqs %}
+  <table>
+    <tr>
+      <th>Information Type</th>
+      <th>Information Value</th>
+    </tr>
+    <tr>
+      <td>UserID</td>
+      <td>{{req["AccId"]}}</td>
+    </tr>
+    <tr>
+      <td>Username</td>
+      <td>{{req["Name"]}}</td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td>{{req["Email"]}}</td>
+    </tr>
+    <tr>
+      <td>NID</td>
+      <td>{{req["NID"]}}</td>
+    </tr>
+    <tr>
+      <td>Date of Birth</td>
+      <td>{{req["DOB"]}}</td>
+    </tr>
+    <tr>
+      <td>Gender</td>
+      <td>{{req["Gender"]}}</td>
+    </tr>  
+    <tr>
+      <td>     
+        
+      </td>
+      <td>       
+        <form action="/VerifyUser" method="POST" >
+          <div class="radio-btn">
+            <input type="radio" class="btn" name="check" checked="checked" value="YES"><span>Approve</span>
+            <input type="radio" class="btn" name="check" value="No"><span>Reject</span>
+            <button class="verif-btn" type="submit" name="userId" value="{{  req['AccId']  }}">Verify</button>
+        </div>
+          
+           
+        </form>
+      </td>
+    </tr>
+    
+  </table><br>
+
+{% endfor %}
+
+
+
+</section>
+
+
+{% endblock %}

@@ -1,0 +1,158 @@
+{% extends "layout.html" %}
+
+
+{%block title%} home {% endblock %}
+
+{% block body %}
+<div class="container"  style="background-color: whitesmoke; color:black; box-shadow:none; border:none; margin-top:50px">
+    <div class="row"  style="background-color: whitesmoke;">
+        <div class="col-7" style="background-color: yellow">
+        
+            <!--Starts-->
+            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                    <img src="/static/kamalapur_railway_station.jpeg" class="d-block w-100 carousel_img" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        
+                        <p>Metro Rail Station</p>
+                    </div>
+                    </div>
+                    <div class="carousel-item">
+                    <img src="/static/Vending_Machine - Cropped.jpg" class="d-block w-100 carousel_img" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        
+                        <p>Get your MetroCard Today!</p>
+                    </div>
+                    </div>
+                    <div class="carousel-item">
+                    <img src="/static/in_platform.jpg" class="d-block w-100 carousel_img" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        
+                        <p>Pre-book your trips to avoid hassels</p>
+                    </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            <!--Ends-->
+
+        </div>
+        <div class="col">
+            <div class="carousel_vertical_center">
+                <div class="text-center font-weight-bold" style="font-size: 24px;">
+                    <span style="font-size: 20px;">Welcome to</span>
+                    <br>
+                    <div class="dhaka_metro_rail_gradient" style="font-weight:1000;">
+                        Dhaka Metro Rail.
+                    </div>
+                    <br>
+                    <span class="title"> From our website, you can:</span>
+                    <br>
+                    <span class="ityped" style="font-size: 25x;"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Carousel Ends-->
+
+<br>
+<br>
+
+<!--How do We Work Starts-->
+<div class="container text-center" style="background-color: whitesmoke; color:black; box-shadow:none; border:none;">
+    
+    <br>
+    <div class="row lesgo">
+        <div class="col">
+            <img src="/static/work01_transparent.png" alt="" style="width: 100px; height: 100px;">
+            <h3 style="padding-top: 10px">Travel All Across Dhaka</h3>
+            <p>
+                Apply for our MetroCard so that you can gain access to the 
+                brand new Dhaka Metro Rail. This will allow you to Travel
+                faster than ever before and without even having to stand in 
+                long queues for a ticket!
+            </p>
+        </div>
+        <div class="col">
+            <img src="/static/work02_transparent.png" alt="" style="width: 100px; height: 100px;">
+            <h3 style="padding-top: 10px">Search and Prebook</h3>
+            <p>
+                Afraid of loosing your train or not getting a seat? Well,
+                throw that thought out of the window as you can always 
+                hop into the "Booking" tab to see what are your available 
+                options and how many seats are left!     
+            </p>
+        </div>
+        <div class="col">
+            <img src="/static/work03_transparent.png" alt="" style="width: 100px; height: 100px;">
+            <h3 style="padding-top: 10px">Add Funds</h3>
+            <p>
+                You can use your debit/credit card to add funds to your 
+                card both manually through various banks or directly 
+                through our website online. This will save you the hassel
+                of paying a visit to the bank!
+            </p>
+        </div>
+    </div>
+</div>
+<!--How do We Work Ends-->
+
+<br><br>
+
+<!--Instruction Steps Starts-->
+<div class="container" style="background-color: whitesmoke; color:black; box-shadow:none; border:none;">
+    <h2 class="text-center title">How do we Work?</h2>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-6">
+            <img src="/static/instruction_section_image.png" alt="" style="width: 80%; height: auto;">
+        </div>
+        <div class="col-6 gg">
+            <h3 class="title" style="padding-top: 10px; text-align:left">Instructions:</h3>
+            <p style="padding-top: 20px;">● Sign-up in our website</p>
+            <p>● Apply for your card</p>
+            <p>● Our officials will verify your details</p>
+            <p>● You will get a date for your bio verification</p>
+            <p>● Our officials will confirm your bio verification</p>
+            <p>● Your MetroCard will be manufactured and delivered</p>
+            <p>● You can now add funds to your account</p>
+            <p>● After that you can see the available trips</p>
+            <p>● Prebook your trips to ensure your seat</p>
+            <p>● Keep a track of your account</p>
+        </div>
+    </div>
+</div>
+<!--Instruction Steps Ends-->
+
+<br><br>
+
+<!--Footer Starts-->
+
+<!--Footer Ends-->
+
+<!--nav_text-->
+<script src="/static/nav_txt.js"></script>
+<script>
+    ityped.init(document.querySelector(".ityped"),{
+            showCursor:true,
+            strings:['1. Apply for your MetroCard', '2. Get Verified', '3. Add Funds to your Card', '4. Book a Trip']
+    })
+</script>
+<!--Bootstrap js-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+{% endblock %}

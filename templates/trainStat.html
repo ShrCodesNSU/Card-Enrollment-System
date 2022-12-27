@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+
+
+<div class="admin_complaints">
+    <section>
+        <h1 class="title" style="text-align: center; margin:50px">Status of Current Train Lines</h1>
+
+        <p></p>
+
+
+        <table class="table_1">
+            <tr>
+                <th>TrainDetails</th>
+                <th>Total Bookings</th>
+                <th>Total Revenue</th>
+    
+            </tr>
+    
+
+            {% for req in allReqs %}
+                <tr>
+                    <td>
+                        {{req["TripId"]}}<br><br>
+                        {{req["TrainName"]}}<br><br>
+                        {{req["Date"]}}<br><br>
+                    </td>
+                    <td>                        
+                        {{req["numTrip"]}}<br>
+                    </td>      
+                    <td>                        
+                        {{req["rev"]}}<br>
+                    </td>              
+                </tr>   
+            {% endfor %}
+          </table>
+    </section>
+    <br>
+    
+
+{% endblock %}
