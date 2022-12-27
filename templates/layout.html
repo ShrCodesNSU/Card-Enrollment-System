@@ -31,9 +31,6 @@
                 
     
 
-                {% if session.hasCard == "True" %}    
-                    <li><a href="Transaction">Transaction</a></li>                
-                {% endif %}
 
                 {% if session.accType == "Admin" %}
                     <li><a href="AdminComplain">Complaints</a></li>   
@@ -42,9 +39,9 @@
 
 
 
-                {% if session.accType == "User" %}                
-                    {% if session.userVerif == "Yes" or session.userVerif == "YES" %}
-                        <li><a href="AccountStatus">Profile</a></li>    
+                {% if session.accType == "User" %}     
+                    {% if session.hasCard == "True" %}    
+                        <li><a href="Transaction">Transaction</a></li>                
                     {% endif %}
                     {% if session.hasCard == "True" %}
                         <li><a href="Metrocard">DeliveryStat</a></li>
@@ -53,7 +50,10 @@
                     {% if session.userVerif == "No" %}
                         <li><a href="Apply">Apply</a></li>
                     {% endif %}
-                    <li><a href="Complaints">Complaints</a></li>
+                    <li><a href="Complaints">Complaints</a></li>           
+                    {% if session.userVerif == "Yes" or session.userVerif == "YES" %}
+                        <li><a href="AccountStatus">Profile</a></li>    
+                    {% endif %}
                 {% endif %}
 
 
@@ -62,8 +62,8 @@
                     <li><a href="VerifyUser">VerifyUser</a></li>
                     <li><a href="BioVer">BioVerification</a></li>
                     <li><a href="UpdateDelivery">UpdateDelivery</a></li>
-                    <li><a href="deleteTrip">TripDelete</a></li>
                     <li><a href="TripsAndBooking">Create Trips</a></li>
+                    <li><a href="deleteTrip">TripDelete</a></li>
                 {% endif %}
 
 
@@ -73,7 +73,7 @@
                     <a href="Logout" style="color: white; text-decoration:none; border: 1px solid orange; padding: 10px 15px 10px 15px;  border-radius: 10px; ">Logout</a>
                 {% else %}
                     <a href="Login" style="color: white;text-decoration:none; border: 1px solid orange; padding: 10px 15px 10px 15px;  border-radius: 10px; ">Login</a>
-                    <li style="color: white;">/</li>
+                    <li style="color: white" class="slash">/</li>
                     <a href="SignUp"><button type="button" class="btn btn-warning">Sign-up</button></a>
                 {% endif %}
 

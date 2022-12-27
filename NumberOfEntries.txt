@@ -1,0 +1,17 @@
+
+TableName           => NumEntries
+
+accounts            =>  65
+accountStatus       =>  48
+Booking             =>  199
+cardDelivery        =>  49
+complaint           =>  6
+faqList             =>  7
+officialAccount     =>  2
+phone               =>  106
+transactions        =>  65
+trip                =>  10
+userAccount         =>  63
+verifications       =>  53
+--------------------------------
+Total Entries       =>  673 entries

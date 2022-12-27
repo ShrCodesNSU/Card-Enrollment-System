@@ -130,6 +130,7 @@ def VerifyUser():
 
 @app.route("/ConfirmBooking", methods = ["POST", "GET"])
 def ConfirmBooking(trId=0):    
+    warning = 0
     if request.method == "POST":
         
         acc=session["user_id"]
@@ -140,12 +141,17 @@ def ConfirmBooking(trId=0):
         app.logger.info("yessssssssssssssss: " + trId)
         trInfo = db.execute("SELECT * FROM trip WHERE TripId=:tr", tr=trId)
         if stat == "Yes":
-            db.execute("INSERT INTO booking(AccId, TripId) VALUES (:a, :t)", a=acc, t=trId)
-            accStat = db.execute("SELECT * FROM accountStatus WHERE AccId=:a", a=acc)
+            alreadyBooked = db.execute("SELECT * FROM booking WHERE AccId = :a AND TripId = :t", a=session["user_id"], t=trId)
             
-            db.execute("UPDATE trip SET AvailSeat=:avSt WHERE TripId=:trId", avSt = int(trInfo[0]["AvailSeat"]) -1, trId=trId)
-            db.execute("UPDATE accountStatus SET NumTrips=:n, Expenditure=:exp, Balance=:b WHERE AccId=:acc", n=int(accStat[0]["NumTrips"])+1, exp=int(accStat[0]["Expenditure"])+int(trInfo[0]["Cost"]), b=int(accStat[0]["Balance"])-int(trInfo[0]["Cost"]), acc=acc)
-        
+            if not alreadyBooked:
+                db.execute("INSERT INTO booking(AccId, TripId) VALUES (:a, :t)", a=acc, t=trId)
+                accStat = db.execute("SELECT * FROM accountStatus WHERE AccId=:a", a=acc)
+                
+                db.execute("UPDATE trip SET AvailSeat=:avSt WHERE TripId=:trId", avSt = int(trInfo[0]["AvailSeat"]) -1, trId=trId)
+                db.execute("UPDATE accountStatus SET NumTrips=:n, Expenditure=:exp, Balance=:b WHERE AccId=:acc", n=int(accStat[0]["NumTrips"])+1, exp=int(accStat[0]["Expenditure"])+int(trInfo[0]["Cost"]), b=int(accStat[0]["Balance"])-int(trInfo[0]["Cost"]), acc=acc)
+            else:
+                warning = 1
+                return render_template("BookingConfirmation.html", tr=trInfo[0], warning=warning)
         
     trInfo =db.execute("SELECT * FROM trip ")
     return render_template("booking.html", allReqs=trInfo)
@@ -188,6 +194,7 @@ def AccountStatus():
     accStat = db.execute("SELECT * FROM accountStatus WHERE AccId = :acc",acc=session["user_id"])
     accInfo = db.execute("SELECT * FROM accounts WHERE AccId = :acc",acc=session["user_id"])
     verifStat = db.execute("SELECT * FROM verifications WHERE AccId = :acc ", acc=session["user_id"])
+    phone = db.execute("SELECT * FROM phone WHERE AccId = :acc", acc=session["user_id"])
     
     if accStat:
         cardId = accStat[0]["CardId"]
@@ -215,7 +222,7 @@ def AccountStatus():
         
     
     
-    return render_template("AccountStatus.html", AccID=accId, CardId=cardId, VerifId=verifId, NumTrips=numTrips, Expenditure=exp, Balance=bal, bioStat=bioStat, bioDate=bioDate, Name=name) 
+    return render_template("AccountStatus.html", AccID=accId, CardId=cardId, VerifId=verifId, NumTrips=numTrips, Expenditure=exp, Balance=bal, bioStat=bioStat, bioDate=bioDate, Name=name, phone=phone) 
 
 @app.route("/Apply", methods = ["POST", "GET"])
 def Apply():    

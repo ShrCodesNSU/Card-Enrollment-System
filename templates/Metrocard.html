@@ -8,7 +8,7 @@
     <div class="Card_Container">
         <article class="card">
             <header class="card-header">Card Delivery Tracking</header>
-            <div class="card-body">
+            <div class="card-body" style="padding-top: 50px;">
                 <h6>Delivery ID: {{delId}}</h6>
                 <article class="card">
                     <div class="card-body row">
@@ -18,7 +18,7 @@
                         <div class="col"> <strong>Status:</strong> <br> {{delStat}} </div>
                     </div>
                 </article>
-                <div class="track">
+                <div class="track" style="margin-top: 80px;">
 
                     {% if delStat == "Delivered" %}
                         <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span

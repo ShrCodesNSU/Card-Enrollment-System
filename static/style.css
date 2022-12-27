@@ -41,6 +41,11 @@ nav{
   text-decoration: none;
   font-size: 17px;
 }
+.slash:hover{
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
 
 .nav-links ul li a{
     color: white;

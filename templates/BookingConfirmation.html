@@ -5,6 +5,12 @@
 
 
 <section>
+
+
+    {% if warning == 1 %}
+    <p style="text-align: center; padding:60px; margin:50px; background: rgba(252, 17, 0, 0.43);">Already Booked</p>
+    {% endif %}
+
 <div class="BookingConfirmation_Wrapper" style="text-align: center;">
     <form action="/ConfirmBooking" method="post" class="form">
         <div class="radio-btn">

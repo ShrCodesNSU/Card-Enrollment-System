@@ -10,6 +10,8 @@
 
 </section>
 <section class="Status_table_right">
+    <h2 class="title" style="text-align: center; margin:50px">Your Profile</h2>
+
     <table>
         <tr>
             <th style="background-color: black;">StatusType</th>
@@ -23,6 +25,13 @@
             <td>Name</td>
             <td>{{ Name }}</td>
         </tr>
+        
+        {% for nums in phone %}
+        <tr>
+            <td>Phone Number</td>
+            <td>{{ nums["PhoneNumber"] }}</td>
+        </tr>
+        {% endfor %}
         <tr>
             <td>CardID</td>
             <td>{{ CardId }}</td>
